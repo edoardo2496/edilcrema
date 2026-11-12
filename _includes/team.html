@@ -1,1 +1,31 @@
+<section class="team-section" aria-labelledby="team-heading">
+  <div class="section-header">
+    <div class="section-eyebrow">Alla guida dell'impresa</div>
+    <h2 id="team-heading" class="section-title">Un volto diretto su ogni cantiere</h2>
+    <p class="section-subtitle">
+      Edil Crema è gestita direttamente dai tre soci attivi: un unico interlocutore 
+      presente dalla fase di preventivo fino alla consegna dell'opera e all'assistenza nel post vednita.
+    </p>
+  </div>
+
+  <div class="team-grid">
+    {% for socio in site.data.soci %}
+      <article class="team-card">
+        <div class="team-photo">
+          <img 
+            src="{{ socio.foto | relative_url }}" 
+            alt="{{ socio.nome }} - {{ socio.ruolo }}" 
+            loading="lazy"
+          >
+        </div>
+        <div class="team-info">
+          <span class="team-badge">{{ socio.esperienza }}</span>
+          <h3 class="team-name">{{ socio.nome }}</h3>
+          <div class="team-role">{{ socio.ruolo }}</div>
+          <p class="team-bio">{{ socio.bio }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
 
