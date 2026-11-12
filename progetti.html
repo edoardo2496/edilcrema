@@ -1,0 +1,12 @@
+---
+layout: default
+title: Progetti
+---
+<div class="page">
+  <div class="section-label">Portfolio</div>
+  <h1>Progetti</h1>
+  <div class="project-grid">
+    {% for p in site.progetti %}{% include progetto-card.html p=p %}
+    {% else %}<p>Nessun progetto pubblicato.</p>{% endfor %}
+  </div>
+</div>

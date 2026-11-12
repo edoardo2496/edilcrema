@@ -1,0 +1,62 @@
+---
+layout: default
+title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal 1972
+---
+{% include hero.html %}
+
+<section class="services" id="servizi">
+  <div class="section-label">Servizi</div>
+  <h2 class="section-title">Case, capannoni e territorio.</h2>
+  <div class="service-list">
+    {% for s in site.data.servizi %}{% include servizio.html s=s %}{% endfor %}
+  </div>
+</section>
+
+<section class="numbers" id="numeri">
+  {% for n in site.data.numeri %}
+  <div class="number-item"><strong>{{ n.valore }}</strong><span>{{ n.etichetta }}</span></div>
+  {% endfor %}
+</section>
+
+<section class="process" id="processo">
+  <div class="section-label">Come lavoriamo</div>
+  <h2 class="section-title">Dalla costruzione al post vendita, con lo stesso interlocutore.</h2>
+  <div class="process-steps">
+    {% for p in site.data.processo %}
+    <div class="process-step">
+      <div class="step-number">{{ forloop.index }}</div>
+      <div class="step-title">{{ p.titolo }}</div>
+      <div class="step-desc">{{ p.testo }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="featured-projects" id="progetti">
+  <div class="section-label">Progetti</div>
+  <h2 class="section-title">Alcuni dei nostri lavori.</h2>
+  <div class="project-grid">
+    {% for p in site.progetti limit:3 %}{% include progetto-card.html p=p %}{% endfor %}
+  </div>
+</section>
+
+<section class="about" id="chi-siamo">
+  <div class="section-label">Chi siamo</div>
+  <h2 class="section-title">Cinquant'anni di cantieri nel Nord Est.</h2>
+  <div class="about-body">
+    <p>Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, strutture industriali e opere di urbanizzazione. Passione e impegno per il lavoro ben fatto sono il filo che unisce oltre cinquant'anni di cantieri.</p>
+  </div>
+</section>
+
+<section class="soci" id="soci">
+  <div class="section-label">Soci</div>
+  <h2 class="section-title">DA DEFINIRE</h2>
+  <div class="soci-grid">
+    {% for s in site.data.soci %}{% include socio.html s=s %}{% endfor %}
+  </div>
+</section>
+
+<section class="cta-section" id="contatto">
+  <h2 class="cta-title">Parliamo del tuo prossimo progetto.</h2>
+  <a href="{{ '/contatti.html' | relative_url }}" class="btn-primary">Contattaci</a>
+</section>
