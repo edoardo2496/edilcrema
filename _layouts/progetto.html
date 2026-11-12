@@ -1,9 +1,66 @@
 ---
 layout: default
 ---
-<article class="page">
+<article class="page project-detail">
   <div class="section-label">{{ page.tipologia }} · {{ page.luogo }} · {{ page.anno }}</div>
   <h1>{{ page.title }}</h1>
-  {{ content }}
-  <p class="back-link"><a href="{{ '/progetti.html' | relative_url }}">← Tutti i progetti</a></p>
+
+  {% if page.cover %}
+    <figure class="project-hero-media">
+      <img src="{{ page.cover | relative_url }}" alt="{{ page.title }} - {{ page.luogo }}">
+    </figure>
+  {% endif %}
+
+  <!-- Scheda tecnica rapida -->
+  <dl class="project-specs">
+    {% if page.tipologia %}
+      <div class="spec-item">
+        <dt>Area di intervento</dt>
+        <dd>{{ page.tipologia }}</dd>
+      </div>
+    {% endif %}
+    {% if page.luogo %}
+      <div class="spec-item">
+        <dt>Luogo</dt>
+        <dd>{{ page.luogo }}</dd>
+      </div>
+    {% endif %}
+    {% if page.anno %}
+      <div class="spec-item">
+        <dt>Anno</dt>
+        <dd>{{ page.anno }}</dd>
+      </div>
+    {% endif %}
+    {% if page.intervento %}
+      <div class="spec-item">
+        <dt>Formula / Intervento</dt>
+        <dd>{{ page.intervento }}</dd>
+      </div>
+    {% endif %}
+  </dl>
+
+  <!-- Descrizione testuale del progetto (il corpo del file .md) -->
+  <div class="project-content">
+    {{ content }}
+  </div>
+
+  <!-- Galleria fotografica aggiuntiva (opzionale) -->
+  {% if page.gallery %}
+    <section class="project-gallery" aria-label="Galleria fotografica del progetto">
+      <h2>Dettagli e fasi del cantiere</h2>
+      <div class="gallery-grid">
+        {% for img in page.gallery %}
+          <figure class="gallery-item">
+            <img src="{{ img | relative_url }}" alt="{{ page.title }} - Foto {{ forloop.index }}" loading="lazy">
+          </figure>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- Navigazione e CTA finale -->
+  <div class="project-footer">
+    <a href="{{ '/progetti.html' | relative_url }}" class="btn-ghost">← Tutti i progetti</a>
+    <a href="{{ '/contatti.html' | relative_url }}" class="btn-primary">Richiedi informazioni per un progetto simile</a>
+  </div>
 </article>
