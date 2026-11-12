@@ -1,38 +1,44 @@
-<article class="servizio-card" id="{{ include.servizio.slug }}">
+<article class="servizio-card" id="{{ include.s.slug }}">
+  {% if include.s.immagine %}
   <div class="servizio-media">
     <img 
-      src="{{ include.servizio.immagine | relative_url }}" 
-      alt="{{ include.servizio.nome }} - Edil Crema" 
+      src="{{ include.s.immagine | relative_url }}" 
+      alt="{{ include.s.nome }} - Edil Crema" 
       loading="lazy"
     >
   </div>
+  {% endif %}
   
   <div class="servizio-content">
+    {% if include.s.tag %}
     <div class="servizio-tags">
-      {% for t in include.servizio.tag %}
+      {% for t in include.s.tag %}
         <span class="tag-pill">{{ t }}</span>
       {% endfor %}
     </div>
+    {% endif %}
 
-    <h3>{{ include.servizio.nome }}</h3>
-    <p class="servizio-sub">{{ include.servizio.sottotitolo }}</p>
-    <p class="servizio-desc">{{ include.servizio.descrizione }}</p>
+    <h3>{{ include.s.nome }}</h3>
+    {% if include.s.sottotitolo %}<p class="servizio-sub">{{ include.s.sottotitolo }}</p>{% endif %}
+    <p class="servizio-desc">{{ include.s.descrizione }}</p>
 
-    {% if include.servizio.plus_distintivo %}
+    {% if include.s.plus_distintivo %}
       <div class="servizio-plus">
-        <strong>Il valore aggiunto Edil Crema:</strong> {{ include.servizio.plus_distintivo }}
+        <strong>Il valore aggiunto Edil Crema:</strong> {{ include.s.plus_distintivo }}
       </div>
     {% endif %}
     
+    {% if include.s.punti_chiave %}
     <ul class="servizio-list">
-      {% for punto in include.servizio.punti_chiave %}
+      {% for punto in include.s.punti_chiave %}
         <li>{{ punto }}</li>
       {% endfor %}
     </ul>
+    {% endif %}
 
     <div class="servizio-actions">
-      <a href="{{ '/progetti.html' | relative_url }}?categoria={{ include.servizio.slug }}" class="btn-link">
-        Scopri i progetti di {{ include.servizio.nome | downcase }} →
+      <a href="{{ '/progetti.html' | relative_url }}?categoria={{ include.s.slug }}" class="btn-link">
+        Scopri i progetti di {{ include.s.nome | downcase }} →
       </a>
     </div>
   </div>
