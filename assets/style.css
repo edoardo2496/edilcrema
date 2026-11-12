@@ -1,46 +1,63 @@
+
 /* ==========================================================================
-   EDIL CREMA — DESIGN SYSTEM REBRANDING
-   Riferimento ufficiale: PANTONE 2171 C (#489FDF) + Blu Architettonico (#142841)
+   EDIL CREMA — DESIGN SYSTEM 2.1
+   Settore: Costruzioni residenziali
+   Identità: Solidità | Architettura | Qualità costruttiva
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01. DESIGN TOKENS
    ========================================================================== */
 
 :root {
-  /* Palette Brand (PANTONE 2171 C e armonie) */
-  --color-brand: #489FDF;          /* PANTONE 2171 C ufficiale */
-  --color-brand-dark: #2878B5;     /* Variante ad alto contrasto per link e hover */
-  --color-brand-tint: #EEF6FC;     /* Velatura azzurra per badge e box valore */
-  
-  --color-primary: #142841;        /* Blu notte architettonico (titoli, footer, CTA) */
-  --color-primary-soft: #1E3A5F;
-  
-  /* Superfici e Sfondi */
-  --bg-body: #F8FAFC;              /* Bianco calce / pietra chiara */
+  --color-brand: #489FDF;
+  --color-brand-dark: #2878B5;
+  --color-brand-light: #EAF4FB;
+
+  --color-primary: #142841;
+  --color-primary-soft: #263D55;
+  --color-primary-light: #344F69;
+
+  --bg-body: #F7F7F4;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F1F5F9;
-  
-  /* Testi */
-  --text-main: #1E293B;
-  --text-muted: #526071;
+  --bg-subtle: #EEEFEA;
+  --bg-concrete: #E8E9E6;
+  --bg-dark: #142841;
+
+  --text-main: #303A43;
+  --text-muted: #69747D;
+  --text-light: #89939A;
   --text-inverse: #FFFFFF;
-  
-  /* Geometria, Bordi e Ombre (in sinergia con il pittogramma del logo) */
-  --border-color: #E2E8F0;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --shadow-sm: 0 2px 10px rgba(20, 40, 65, 0.04);
-  --shadow-md: 0 14px 32px rgba(20, 40, 65, 0.08);
-  
-  /* Tipografia e Spaziature */
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
+
+  --border-color: #E2E4E1;
+  --border-dark: #C8CECF;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  --shadow-sm: 0 3px 12px rgba(20,40,65,.045);
+  --shadow-md: 0 12px 32px rgba(20,40,65,.09);
+  --shadow-lg: 0 22px 55px rgba(20,40,65,.13);
+
+  --font-heading: 'Manrope', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --container-max: 1200px;
-  --section-py: clamp(4rem, 7.5vw, 6.5rem);
+
+  --container-max: 1240px;
+  --section-py: clamp(4.5rem, 8vw, 7.5rem);
+
+  --transition: .25s ease;
 }
 
+
 /* ==========================================================================
-   1. RESET E TIPOGRAFIA DI BASE
+   02. RESET E BASE
    ========================================================================== */
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -48,41 +65,65 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   font-size: 16px;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-body);
+  background: var(--bg-body);
   color: var(--text-main);
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.22s ease;
+  transition: color var(--transition),
+              background var(--transition),
+              border-color var(--transition);
 }
 
-h1, h2, h3, h4 {
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  line-height: 1.16;
+  letter-spacing: -.04em;
 }
 
-/* Contenitore universale */
-section, .page {
+p {
+  margin-bottom: 1rem;
+}
+
+::selection {
+  background: #D8EAF7;
+  color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   03. LAYOUT
+   ========================================================================== */
+
+section,
+.page {
+  width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  padding-inline: clamp(1.5rem, 5vw, 3.5rem);
 }
 
 section {
@@ -90,127 +131,149 @@ section {
 }
 
 .page {
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
 }
 
 .page h1 {
-  font-size: clamp(2.1rem, 4vw, 3.1rem);
-  font-weight: 800;
-  margin-bottom: 1.25rem;
+  max-width: 18ch;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 750;
+  margin-bottom: 1.5rem;
 }
 
 .page-intro {
-  font-size: 1.12rem;
+  max-width: 65ch;
+  font-size: 1.05rem;
+  line-height: 1.9;
   color: var(--text-muted);
-  max-width: 62ch;
   margin-bottom: 2.5rem;
 }
 
-/* Etichetta di sezione con richiamo geometrico al logo */
+
+/* ==========================================================================
+   04. TITOLI DI SEZIONE
+   ========================================================================== */
+
 .section-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: .85rem;
   font-family: var(--font-heading);
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: .72rem;
+  font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: .16em;
   color: var(--color-brand-dark);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .section-label::before {
   content: '';
-  width: 22px;
-  height: 3px;
-  background-color: var(--color-brand);
-  border-radius: 2px;
+  width: 27px;
+  height: 2px;
+  background: var(--color-brand);
 }
 
 .section-title {
-  font-size: clamp(1.85rem, 3.4vw, 2.65rem);
+  max-width: 23ch;
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
   font-weight: 700;
-  margin-bottom: 2.5rem;
-  max-width: 24ch;
+  line-height: 1.15;
+  letter-spacing: -.05em;
+  margin-bottom: 1.8rem;
 }
 
 .section-actions {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   text-align: center;
 }
 
+
 /* ==========================================================================
-   2. BOTTONI E LINK D'AZIONE
+   05. BOTTONI
    ========================================================================== */
-.btn-primary, .btn-ghost {
+
+.btn-primary,
+.btn-ghost {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1.85rem;
+  align-items: center;
+  gap: .65rem;
+  min-height: 50px;
+  padding: .85rem 1.65rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-heading);
+  font-size: .86rem;
   font-weight: 700;
-  font-size: 0.95rem;
   cursor: pointer;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
+  transition: all var(--transition);
 }
 
 .btn-primary {
-  background-color: var(--color-brand);
-  color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary);
-  color: var(--text-inverse);
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary-soft);
+  color: white;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-ghost {
-  background-color: transparent;
-  border-color: var(--color-primary);
+  background: transparent;
   color: var(--color-primary);
+  border-color: var(--border-dark);
 }
 
 .btn-ghost:hover {
-  background-color: var(--color-primary);
-  color: var(--text-inverse);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
 }
 
 .btn-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: .5rem;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--color-brand-dark);
+  font-size: .88rem;
+  font-weight: 750;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-brand);
+  padding-bottom: 4px;
 }
 
 .btn-link:hover {
-  color: var(--color-primary);
-  transform: translateX(4px);
+  color: var(--color-brand-dark);
+  gap: .8rem;
 }
 
+
 /* ==========================================================================
-   3. HEADER & NAVIGAZIONE
+   06. HEADER
    ========================================================================== */
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
 }
 
 nav {
+  width: 100%;
   max-width: var(--container-max);
+  min-height: 82px;
   margin-inline: auto;
-  padding: 0.95rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: .8rem clamp(1.5rem, 5vw, 3.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -219,71 +282,92 @@ nav {
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: .75rem;
   font-family: var(--font-heading);
+  font-size: 1.3rem;
   font-weight: 800;
-  font-size: 1.25rem;
+  letter-spacing: -.045em;
   color: var(--color-primary);
-  letter-spacing: -0.03em;
 }
+
+/* Logo PNG trasparente */
 
 .nav-logo-img {
-  height: 38px;
+  display: block;
   width: auto;
-  border-radius: 6px;
+  height: 46px;
+  max-width: 200px;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 0;
+  box-shadow: none;
 }
+
+/* Se il logo è un PNG trasparente, non applicare
+   filtri o modalità di fusione. */
 
 .nav-links {
-  list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.85rem;
-  font-weight: 500;
-  font-size: 0.95rem;
+  gap: clamp(1rem, 2vw, 1.9rem);
+  font-size: .84rem;
+  font-weight: 600;
+  color: #46535F;
 }
 
-.nav-links a:hover, .nav-links a.is-active {
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
   color: var(--color-brand-dark);
 }
 
 .nav-cta {
-  background-color: var(--color-primary);
-  color: var(--text-inverse) !important;
-  padding: 0.6rem 1.25rem;
+  background: var(--color-primary);
+  color: white !important;
+  padding: .7rem 1.2rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: .82rem;
 }
 
 .nav-cta:hover {
-  background-color: var(--color-brand);
+  background: var(--color-brand);
   color: var(--color-primary) !important;
 }
 
-/* Dropdown Macro Aree */
+
+/* ==========================================================================
+   07. DROPDOWN
+   ========================================================================== */
+
 .has-dropdown {
   position: relative;
 }
 
 .nav-dropdown {
-  list-style: none;
   position: absolute;
-  top: calc(100% + 0.5rem);
-  left: -0.75rem;
-  min-width: 255px;
-  background: var(--bg-surface);
+  top: calc(100% + .8rem);
+  left: -.8rem;
+  min-width: 250px;
+  background: white;
   border: 1px solid var(--border-color);
-  border-top: 3px solid var(--color-brand);
-  border-radius: var(--radius-md);
+  border-top: 2px solid var(--color-brand);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md);
-  padding: 0.5rem;
+  padding: .65rem;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
-  transition: all 0.2s ease;
+  transform: translateY(8px);
+  transition: all .22s ease;
+  z-index: 110;
 }
 
-.has-dropdown:hover .nav-dropdown {
+.has-dropdown:hover .nav-dropdown,
+.has-dropdown:focus-within .nav-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -291,56 +375,75 @@ nav {
 
 .nav-dropdown a {
   display: block;
-  padding: 0.6rem 0.9rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
+  padding: .7rem .85rem;
+  font-size: .84rem;
+  font-weight: 550;
+  color: var(--text-main);
+  border-radius: 2px;
 }
 
 .nav-dropdown a:hover {
-  background-color: var(--color-brand-tint);
+  background: var(--bg-subtle);
   color: var(--color-primary);
 }
 
-/* Menu Mobile */
-.menu-toggle, .menu-btn {
+
+/* ==========================================================================
+   08. MENU MOBILE
+   ========================================================================== */
+
+.menu-toggle,
+.menu-btn {
   display: none;
 }
 
 @media (max-width: 880px) {
+
   .menu-btn {
     display: flex;
     align-items: center;
-    width: 28px;
-    height: 24px;
+    justify-content: center;
+    width: 30px;
+    height: 28px;
     cursor: pointer;
   }
 
-  .menu-btn span, .menu-btn span::before, .menu-btn span::after {
+  .menu-btn span,
+  .menu-btn span::before,
+  .menu-btn span::after {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: var(--color-primary);
+    background: var(--color-primary);
     position: relative;
-    transition: 0.25s ease;
+    transition: .25s ease;
   }
 
-  .menu-btn span::before { content: ''; top: -8px; position: absolute; }
-  .menu-btn span::after { content: ''; top: 8px; position: absolute; }
+  .menu-btn span::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+  }
+
+  .menu-btn span::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+  }
 
   .nav-links {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--bg-surface);
+    display: none;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.5rem;
-    gap: 1rem;
+    gap: 1.1rem;
+    padding: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+    background: white;
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
-    display: none;
   }
 
   .menu-toggle:checked ~ .nav-links {
@@ -349,6 +452,9 @@ nav {
 
   .nav-dropdown {
     position: static;
+    display: block;
+    min-width: 100%;
+    margin-top: .5rem;
     opacity: 1;
     visibility: visible;
     transform: none;
@@ -356,53 +462,62 @@ nav {
     border: none;
     border-left: 2px solid var(--color-brand);
     border-radius: 0;
-    margin-top: 0.5rem;
-    padding-left: 0.75rem;
+    padding-left: .8rem;
+  }
+
+  .nav-dropdown a {
+    padding: .5rem .7rem;
   }
 }
 
+
 /* ==========================================================================
-   4. HERO SECTION
+   09. HERO
    ========================================================================== */
+
 .hero {
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  gap: 3.5rem;
+  grid-template-columns: 1.08fr .92fr;
+  gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
-  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding-top: clamp(4rem, 7vw, 6.5rem);
+  padding-bottom: clamp(4rem, 7vw, 6.5rem);
 }
 
 .hero-eyebrow {
   display: inline-block;
   font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: .72rem;
+  font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: .15em;
   color: var(--color-brand-dark);
-  background-color: var(--color-brand-tint);
-  padding: 0.4rem 0.9rem;
-  border-radius: var(--radius-sm);
-  margin-bottom: 1.35rem;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 1.6rem;
 }
 
 .hero-title {
-  font-size: clamp(2.35rem, 4.6vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 1.35rem;
+  max-width: 16ch;
+  font-size: clamp(2.7rem, 5vw, 4.4rem);
+  font-weight: 750;
+  line-height: 1.09;
+  letter-spacing: -.06em;
+  margin-bottom: 1.7rem;
 }
 
 .hero-title em {
   font-style: normal;
   color: var(--color-brand-dark);
-  position: relative;
 }
 
 .hero-body {
-  font-size: 1.12rem;
+  max-width: 54ch;
+  font-size: 1.04rem;
+  line-height: 1.9;
   color: var(--text-muted);
-  margin-bottom: 2.2rem;
-  max-width: 52ch;
+  margin-bottom: 2.4rem;
 }
 
 .hero-actions {
@@ -411,51 +526,218 @@ nav {
   gap: 1rem;
 }
 
+
+/* ==========================================================================
+   10. FOTOGRAFIE E IMMAGINI
+   ========================================================================== */
+
 .hero-media {
   position: relative;
 }
 
 .hero-media img {
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   width: 100%;
-  border: 1px solid var(--border-color);
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+  border: none;
+  box-shadow: var(--shadow-md);
 }
 
+.project-image,
+.card-image {
+  overflow: hidden;
+}
+
+.project-image img,
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .65s cubic-bezier(.2,.7,.2,1);
+}
+
+.project-image:hover img,
+.card-image:hover img {
+  transform: scale(1.035);
+}
+
+
+/* ==========================================================================
+   11. SETTORI E INFORMAZIONI
+   ========================================================================== */
+
 .hero-sectors {
-  margin-top: 1.25rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--color-brand);
-  border-radius: var(--radius-md);
-  padding: 1.1rem 1.35rem;
-  box-shadow: var(--shadow-sm);
+  margin-top: 1.5rem;
+  padding: 1.3rem 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border-color);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .area-list {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  margin-top: 0.35rem;
+  gap: .8rem 1.5rem;
+  margin-top: .8rem;
 }
 
 .area-item a {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  color: var(--color-primary);
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: .5rem;
+  font-family: var(--font-heading);
+  font-size: .85rem;
+  font-weight: 650;
+  color: var(--color-primary);
 }
 
 .area-item a::before {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background-color: var(--color-brand);
+  background: var(--color-brand);
 }
 
+.area-item a:hover {
+  color: var(--color-brand-dark);
+}
+
+
+/* ==========================================================================
+   12. ACCESSIBILITÀ
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+.menu-btn:focus-visible {
+  outline: 2px solid var(--color-brand-dark);
+  outline-offset: 4px;
+}
+
+
+/* ==========================================================================
+   13. TABLET
+   ========================================================================== */
+
+@media (max-width: 880px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  .hero-title {
+    max-width: 17ch;
+    font-size: clamp(2.7rem, 7vw, 3.8rem);
+  }
+
+  .hero-media {
+    max-width: 700px;
+  }
+
+  .hero-media img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .section-title {
+    max-width: 25ch;
+  }
+}
+
+
+/* ==========================================================================
+   14. SMARTPHONE
+   ========================================================================== */
+
+@media (max-width: 560px) {
+
+  html {
+    font-size: 15px;
+  }
+
+  section {
+    padding-block: 4rem;
+  }
+
+  .page {
+    padding-block: 3rem;
+  }
+
+  nav {
+    min-height: 72px;
+  }
+
+  .nav-logo-img {
+    height: 38px;
+    max-width: 165px;
+  }
+
+  .hero {
+    padding-top: 2.8rem;
+    padding-bottom: 3.5rem;
+    gap: 2.2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 3.3rem);
+  }
+
+  .hero-body {
+    font-size: .98rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    width: 100%;
+  }
+
+  .hero-media img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .page h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-intro {
+    font-size: 1rem;
+  }
+
+  .area-list {
+    gap: .8rem 1rem;
+  }
+}
+
+
+/* ==========================================================================
+   15. RIDUZIONE ANIMAZIONI
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
