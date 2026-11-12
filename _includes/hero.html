@@ -1,29 +1,45 @@
-<section class="hero">
+<section class="hero" aria-label="Introduzione Edil Crema">
   <div class="hero-left">
-    <div class="hero-eyebrow">Edil Crema · Costruzioni nel Nord Est dal 1972</div>
+    <div class="hero-eyebrow">Edil Crema · Dal 1972 nel Nord Est</div>
 
     <h1 class="hero-title">
-      Costruiamo il Nord Est <em>dal 1972</em>.
+      Costruiamo valore solidamente <em>radicato nel territorio</em>.
     </h1>
 
     <p class="hero-body">
-      Opere <strong>residenziali, industriali e di urbanizzazione</strong>,
-      realizzate con la stessa cura da oltre cinquant'anni.
+      Dalla progettazione alla consegna: realizziamo opere 
+      <strong>residenziali, industriali e di urbanizzazione</strong> 
+      con tecnologie moderne e controllo diretto su ogni fase del cantiere.
     </p>
 
     <div class="hero-actions">
       <a href="{{ '/contatti.html' | relative_url }}" class="btn-primary">Richiedi un preventivo</a>
-      <a href="{{ '/progetti.html' | relative_url }}" class="btn-ghost">Guarda i progetti</a>
+      <a href="{{ '/progetti.html' | relative_url }}" class="btn-ghost">Esplora i progetti</a>
     </div>
   </div>
 
   <div class="hero-right">
-    <!-- foto principale di un cantiere: assets/img/progetti/ -->
-    <div class="section-label">Cosa realizziamo</div>
-    <ul class="area-list">
-      <li class="area-item"><strong>Residenziale</strong></li>
-      <li class="area-item"><strong>Industriale</strong></li>
-      <li class="area-item"><strong>Urbanizzazioni</strong></li>
-    </ul>
+    <figure class="hero-media">
+      <img 
+        src="{{ '/assets/img/progetti/hero-cantiere.jpg' | relative_url }}" 
+        alt="Cantiere edile Edil Crema nel Nord Est" 
+        loading="eager"
+      >
+    </figure>
+
+    <div class="hero-sectors">
+      <span class="section-label">Aree di intervento</span>
+      <ul class="area-list">
+        <li class="area-item">
+          <a href="{{ '/residenziale.html' | relative_url }}"><strong>Residenziale</strong></a>
+        </li>
+        <li class="area-item">
+          <a href="{{ '/industriale.html' | relative_url }}"><strong>Industriale</strong></a>
+        </li>
+        <li class="area-item">
+          <a href="{{ '/urbanizzazioni.html' | relative_url }}"><strong>Urbanizzazioni</strong></a>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
