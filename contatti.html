@@ -1,11 +1,103 @@
 ---
 layout: default
-title: Contatti
+title: Contatti — Edil Crema
 ---
 <div class="page">
   <div class="section-label">Contatti</div>
-  <h1>Parliamone</h1>
-  <p>{{ site.data.azienda.indirizzo }}</p>
-  <p><a href="mailto:{{ site.data.azienda.email }}">{{ site.data.azienda.email }}</a></p>
-  <p><a href="tel:{{ site.data.azienda.telefono }}">{{ site.data.azienda.telefono }}</a></p>
+  <h1>Parliamo del tuo progetto.</h1>
+  <p class="page-intro">
+    Che si tratti di realizzare la tua nuova casa chiavi in mano, un prefabbricato industriale su misura 
+    o un'opera di urbanizzazione, confrontati direttamente con i nostri soci.
+  </p>
+
+  <div class="contact-grid">
+    
+    <!-- Colonna Sinistra: Dati diretti e Sede -->
+    <div class="contact-info">
+      <div class="contact-block">
+        <h2>Sede operativa e uffici</h2>
+        <p>{{ site.data.azienda.indirizzo }}</p>
+      </div>
+
+      <div class="contact-block">
+        <h2>Recapiti diretti</h2>
+        <p>
+          <strong>Telefono:</strong> 
+          <a href="tel:{{ site.data.azienda.telefono | remove: ' ' }}">{{ site.data.azienda.telefono }}</a>
+        </p>
+        <p>
+          <strong>Email:</strong> 
+          <a href="mailto:{{ site.data.azienda.email }}">{{ site.data.azienda.email }}</a>
+        </p>
+        {% if site.data.azienda.pec %}
+          <p><strong>PEC:</strong> {{ site.data.azienda.pec }}</p>
+        {% endif %}
+      </div>
+
+      <div class="contact-block">
+        <h2>Dati societari</h2>
+        <p>
+          {{ site.data.azienda.ragione_sociale }}<br>
+          P.IVA e C.F. {{ site.data.azienda.partita_iva }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Colonna Destra: Form profilato sulle 3 macro aree -->
+    <div class="contact-form-wrapper">
+      <h2>Richiedi un primo confronto</h2>
+      
+      <!-- Sostituisci l'URL in action con il tuo endpoint Formspree o Web3Forms -->
+      <form action="https://formspree.io" method="POST" class="contact-form">
+        
+        <div class="form-group">
+          <label for="nome">Nome e Cognome o Azienda *</label>
+          <input type="text" id="nome" name="nome" required placeholder="Es. Mario Rossi / Rossi Srl">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="nome@esempio.it">
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Telefono *</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="+39 ...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="area">Area di interesse *</label>
+          <select id="area" name="area" required>
+            <option value="" disabled selected>Seleziona il tipo di intervento...</option>
+            {% for s in site.data.servizi %}
+              <option value="{{ s.nome }}">{{ s.nome }}</option>
+            {% endfor %}
+            <option value="Altro">Altra richiesta / Consulenza tecnica</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="luogo">Comune o zona dell'intervento</label>
+          <input type="text" id="luogo" name="luogo" placeholder="Es. Provincia di Treviso / Veneto">
+        </div>
+
+        <div class="form-group">
+          <label for="messaggio">Raccontaci brevemente la tua idea *</label>
+          <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Descrivi le tue esigenze, tempistiche o se hai già un terreno o un progetto..."></textarea>
+        </div>
+
+        <div class="form-group form-privacy">
+          <label class="checkbox-label">
+            <input type="checkbox" name="privacy" required>
+            <span>Ho letto l'<a href="{{ '/privacy-policy.html' | relative_url }}">informativa sulla privacy</a> e acconsento al trattamento dei dati per essere ricontattato. *</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Invia richiesta</button>
+      </form>
+    </div>
+
+  </div>
 </div>
