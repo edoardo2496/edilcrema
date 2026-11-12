@@ -1,7 +1,39 @@
-<div class="service-item">
-  <div class="service-name">{{ include.s.nome }}</div>
-  <div class="service-desc">{{ include.s.descrizione }}</div>
-  <div class="service-tags">
-    {% for t in include.s.tag %}<span class="tag">{{ t }}</span>{% endfor %}
+<article class="servizio-card" id="{{ include.servizio.slug }}">
+  <div class="servizio-media">
+    <img 
+      src="{{ include.servizio.immagine | relative_url }}" 
+      alt="{{ include.servizio.nome }} - Edil Crema" 
+      loading="lazy"
+    >
   </div>
-</div>
+  
+  <div class="servizio-content">
+    <div class="servizio-tags">
+      {% for t in include.servizio.tag %}
+        <span class="tag-pill">{{ t }}</span>
+      {% endfor %}
+    </div>
+
+    <h3>{{ include.servizio.nome }}</h3>
+    <p class="servizio-sub">{{ include.servizio.sottotitolo }}</p>
+    <p class="servizio-desc">{{ include.servizio.descrizione }}</p>
+
+    {% if include.servizio.plus_distintivo %}
+      <div class="servizio-plus">
+        <strong>Il valore aggiunto Edil Crema:</strong> {{ include.servizio.plus_distintivo }}
+      </div>
+    {% endif %}
+    
+    <ul class="servizio-list">
+      {% for punto in include.servizio.punti_chiave %}
+        <li>{{ punto }}</li>
+      {% endfor %}
+    </ul>
+
+    <div class="servizio-actions">
+      <a href="{{ '/progetti.html' | relative_url }}?categoria={{ include.servizio.slug }}" class="btn-link">
+        Scopri i progetti di {{ include.servizio.nome | downcase }} →
+      </a>
+    </div>
+  </div>
+</article>
