@@ -1,7 +1,0 @@
-title: Polymatheia
-description: Allenamento, Filosofia, Matematica — indagini su un unico metodo
-lang: it
-permalink: /:year/:month/:day/:title/
-markdown: kramdown
-exclude:
-  - README.md
