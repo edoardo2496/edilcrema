@@ -1,1 +1,17 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.data.azienda.payoff }}">
+<link rel="icon" type="image/png" href="{{ '/assets/img/brand/favicon.png' | relative_url }}">
+<!-- font: da scegliere con il rebranding -->
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+{% include nav.html %}
+<main>{{ content }}</main>
+{% include footer.html %}
+</body>
+</html>
