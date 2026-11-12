@@ -1,34 +1,48 @@
 <nav aria-label="Navigazione principale">
   <a class="nav-logo" href="{{ '/' | relative_url }}">
-    <img src="{{ '/assets/img/brand/logo.png' | relative_url }}" alt="{{ site.data.azienda.nome }}" class="nav-logo-img">
-    <span class="nav-logo-text">{{ site.data.azienda.nome }}</span>
+    <img src="{{ '/assets/img/brand/logo.png' | relative_url }}"
+         alt=""
+         height="46"
+         class="nav-logo-img">
+    <span class="nav-logo-text">{{ site.data.azienda.nome | escape }}</span>
   </a>
 
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Apri menu">
-  <label for="menu-toggle" class="menu-btn"><span></span></label>
+  <button class="menu-btn" type="button"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-label="Apri menu">
+    <span></span>
+  </button>
 
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li class="has-dropdown">
       <a href="{{ '/#servizi' | relative_url }}">Servizi</a>
       <ul class="nav-dropdown">
         {% for s in site.data.servizi %}
           <li>
-            <a href="{{ '/#' | append: s.slug | relative_url }}">{{ s.nome }}</a>
+            <a href="{{ '/#' | append: s.slug | relative_url }}">{{ s.nome | escape }}</a>
           </li>
         {% endfor %}
       </ul>
     </li>
+
     <li>
-      <a href="{{ '/progetti.html' | relative_url }}" {% if page.url contains 'progetti' %}class="is-active"{% endif %}>Progetti</a>
+      <a href="{{ '/progetti.html' | relative_url }}"
+         {% if page.layout == 'progetto' or page.url contains '/progetti' %}class="is-active" aria-current="page"{% endif %}>Progetti</a>
     </li>
+
     <li><a href="{{ '/#chi-siamo' | relative_url }}">Chi siamo</a></li>
     <li><a href="{{ '/#soci' | relative_url }}">Soci</a></li>
+
     <li>
-      <a href="{{ '/blog.html' | relative_url }}" {% if page.url contains 'blog' %}class="is-active"{% endif %}>Blog</a>
+      <a href="{{ '/blog.html' | relative_url }}"
+         {% if page.layout == 'post' or page.url == '/blog.html' %}class="is-active" aria-current="page"{% endif %}>Blog</a>
     </li>
+
     <li>
-      <a href="{{ '/contatti.html' | relative_url }}" class="nav-cta {% if page.url contains 'contatti' %}is-active{% endif %}">Contatti</a>
+      <a href="{{ '/contatti.html' | relative_url }}"
+         class="nav-cta{% if page.url == '/contatti.html' %} is-active{% endif %}"
+         {% if page.url == '/contatti.html' %}aria-current="page"{% endif %}>Contatti</a>
     </li>
   </ul>
 </nav>
-<script src="{{ '/assets/js/nav.js' | relative_url }}"></script>
