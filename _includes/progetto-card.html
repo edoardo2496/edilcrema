@@ -1,0 +1,5 @@
+<a class="project-card" href="{{ include.p.url | relative_url }}">
+  <img src="{{ include.p.cover | relative_url }}" alt="{{ include.p.title }}" loading="lazy">
+  <div class="project-meta">{{ include.p.tipologia }} · {{ include.p.luogo }}</div>
+  <h3>{{ include.p.title }}</h3>
+</a>
