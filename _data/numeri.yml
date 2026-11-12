@@ -6,11 +6,13 @@
   etichetta: "Soci operativi"
   dettaglio: "Un interlocutore diretto e presente in ogni fase, dal preventivo alla consegna fino al post-vendita."
 
+- valore: "Chiavi in mano"
+  etichetta: "Edilizia residenziale"
+  dettaglio: "Architetto incluso nel capitolato per progettare e arredare gli interni della tua casa."
+
 - valore: "Su misura"
-  etichetta: "Approccio sartoriale"
-  dettagli:
-    - "Architetto incluso per gli interni nel residenziale."
-    - "Soluzioni industriali ad hoc per il business del cliente."
+  etichetta: "Edilizia industriale"
+  dettaglio: "Realizzazione di prefabbricati e soluzioni ad hoc cucite sul business del cliente."
 
 - valore: "Veneto"
   etichetta: "Radici nel territorio"
