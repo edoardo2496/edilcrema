@@ -1,12 +1,63 @@
 ---
 layout: default
-title: Progetti
+title: Progetti — Edil Crema
 ---
 <div class="page">
   <div class="section-label">Portfolio</div>
   <h1>Progetti</h1>
-  <div class="project-grid">
-    {% for p in site.progetti %}{% include progetto-card.html p=p %}
-    {% else %}<p>Nessun progetto pubblicato.</p>{% endfor %}
+  <p class="page-intro">
+    Esplora i nostri cantieri suddivisi per area di intervento: residenziale chiavi in mano, 
+    prefabbricati industriali su misura e opere di urbanizzazione nel Nord Est.
+  </p>
+
+  <!-- Barra dei filtri generata dinamicamente da _data/servizi.yml -->
+  <div class="filter-bar" role="group" aria-label="Filtra progetti per categoria">
+    <button type="button" class="filter-btn is-active" data-filter="tutti">Tutti</button>
+    {% for s in site.data.servizi %}
+      <button type="button" class="filter-btn" data-filter="{{ s.slug }}">{{ s.nome }}</button>
+    {% endfor %}
+  </div>
+
+  <!-- Griglia dei progetti -->
+  <div class="project-grid" id="project-grid">
+    {% for p in site.progetti %}
+      {% include progetto-card.html p=p %}
+    {% else %}
+      <p>Nessun progetto pubblicato.</p>
+    {% endfor %}
   </div>
 </div>
+
+<!-- Script leggero per filtrare le card e leggere il parametro ?categoria= nell'URL -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    function applyFilter(category) {
+      buttons.forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.filter === category);
+      });
+
+      cards.forEach(card => {
+        const cardCat = card.dataset.categoria;
+        if (category === 'tutti' || cardCat === category) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    // Controlla se nell'URL c'è ?categoria=residenziale (o industriale / urbanizzazione)
+    const params = new URLSearchParams(window.location.search);
+    const initialCategory = params.get('categoria');
+    if (initialCategory) {
+      applyFilter(initialCategory);
+    }
+  });
+</script>
