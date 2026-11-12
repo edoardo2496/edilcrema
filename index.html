@@ -8,13 +8,19 @@ title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal
   <div class="section-label">Servizi</div>
   <h2 class="section-title">Case, capannoni e territorio.</h2>
   <div class="service-list">
-    {% for s in site.data.servizi %}{% include servizio.html s=s %}{% endfor %}
+    {% for s in site.data.servizi %}
+      {% include servizio.html s=s %}
+    {% endfor %}
   </div>
 </section>
 
 <section class="numbers" id="numeri">
   {% for n in site.data.numeri %}
-  <div class="number-item"><strong>{{ n.valore }}</strong><span>{{ n.etichetta }}</span></div>
+  <div class="number-item">
+    <strong>{{ n.valore }}</strong>
+    <span>{{ n.etichetta }}</span>
+    {% if n.dettaglio %}<p class="number-detail">{{ n.dettaglio }}</p>{% endif %}
+  </div>
   {% endfor %}
 </section>
 
@@ -36,7 +42,12 @@ title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal
   <div class="section-label">Progetti</div>
   <h2 class="section-title">Alcuni dei nostri lavori.</h2>
   <div class="project-grid">
-    {% for p in site.progetti limit:3 %}{% include progetto-card.html p=p %}{% endfor %}
+    {% for p in site.progetti limit:3 %}
+      {% include progetto-card.html p=p %}
+    {% endfor %}
+  </div>
+  <div class="section-actions">
+    <a href="{{ '/progetti.html' | relative_url }}" class="btn-ghost">Guarda tutti i progetti</a>
   </div>
 </section>
 
@@ -50,9 +61,11 @@ title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal
 
 <section class="soci" id="soci">
   <div class="section-label">Soci</div>
-  <h2 class="section-title">DA DEFINIRE</h2>
+  <h2 class="section-title">Un volto diretto su ogni cantiere.</h2>
   <div class="soci-grid">
-    {% for s in site.data.soci %}{% include socio.html s=s %}{% endfor %}
+    {% for s in site.data.soci %}
+      {% include socio.html s=s %}
+    {% endfor %}
   </div>
 </section>
 
