@@ -1,4 +1,17 @@
 - valore: "1972"
   etichetta: "Anno di fondazione"
-- valore: "Nord Est"
-  etichetta: "Area di intervento"
+  dettaglio: "Oltre cinquant'anni di esperienza continua nella costruzione edile del Nord Est."
+
+- valore: "3"
+  etichetta: "Soci operativi"
+  dettaglio: "Un interlocutore diretto e presente in ogni fase, dal preventivo alla consegna fino al post-vendita."
+
+- valore: "Su misura"
+  etichetta: "Approccio sartoriale"
+  dettagli:
+    - "Architetto incluso per gli interni nel residenziale."
+    - "Soluzioni industriali ad hoc per il business del cliente."
+
+- valore: "Veneto"
+  etichetta: "Radici nel territorio"
+  dettaglio: "Collaborazioni consolidate con privati, aziende e amministrazioni comunali."
