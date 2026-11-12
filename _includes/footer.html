@@ -1,9 +1,56 @@
-<footer>
-  <div class="footer-logo">{{ site.data.azienda.nome }}</div>
-  <div>{{ site.data.azienda.indirizzo }}</div>
-  <div class="footer-links">
-    <a href="mailto:{{ site.data.azienda.email }}">Email</a>
-    <a href="tel:{{ site.data.azienda.telefono }}">Telefono</a>
+<footer class="site-footer">
+  <div class="footer-grid">
+    
+    <!-- Colonna 1: Identità e descrizione -->
+    <div class="footer-col">
+      <div class="footer-logo">{{ site.data.azienda.nome }}</div>
+      <p class="footer-tagline">
+        Impresa di costruzioni nel Nord Est dal 1972. Opere residenziali, industriali e urbanizzazioni.
+      </p>
+    </div>
+
+    <!-- Colonna 2: Navigazione rapida -->
+    <div class="footer-col">
+      <div class="footer-heading">Aree e Azienda</div>
+      <ul class="footer-nav">
+        <li><a href="{{ '/residenziale.html' | relative_url }}">Residenziale</a></li>
+        <li><a href="{{ '/industriale.html' | relative_url }}">Industriale</a></li>
+        <li><a href="{{ '/urbanizzazioni.html' | relative_url }}">Urbanizzazioni</a></li>
+        <li><a href="{{ '/progetti.html' | relative_url }}">Progetti</a></li>
+        <li><a href="{{ '/contatti.html' | relative_url }}">Contatti</a></li>
+      </ul>
+    </div>
+
+    <!-- Colonna 3: Contatti diretti -->
+    <div class="footer-col">
+      <div class="footer-heading">Contatti</div>
+      <address class="footer-address">
+        {{ site.data.azienda.indirizzo }}<br>
+        <a href="tel:{{ site.data.azienda.telefono | remove: ' ' }}">
+          Tel: {{ site.data.azienda.telefono }}
+        </a><br>
+        <a href="mailto:{{ site.data.azienda.email }}">
+          {{ site.data.azienda.email }}
+        </a>
+        {% if site.data.azienda.pec %}
+          <br>PEC: {{ site.data.azienda.pec }}
+        {% endif %}
+      </address>
+    </div>
+
   </div>
-  <div class="footer-legal">P.IVA {{ site.data.azienda.partita_iva }}</div>
+
+  <!-- Barra inferiore: Dati legali obbligatori e Privacy -->
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      © {{ 'now' | date: "%Y" }} {{ site.data.azienda.ragione_sociale }} · 
+      P.IVA e C.F. {{ site.data.azienda.partita_iva }} · 
+      REA {{ site.data.azienda.rea }}
+    </div>
+    <div class="footer-policies">
+      <a href="{{ '/privacy-policy.html' | relative_url }}">Privacy Policy</a>
+      <a href="{{ '/cookie-policy.html' | relative_url }}">Cookie Policy</a>
+    </div>
+  </div>
 </footer>
+
