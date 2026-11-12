@@ -1,7 +1,9 @@
-nome: Edil Crema
-payoff: "Costruzioni residenziali, industriali e urbanizzazioni nel Nord Est dal 1972"
-indirizzo: "Via Rossi 7, 31050 Ponzano Veneto (TV)"
-telefono: "0422969142"
-email: "DA DEFINIRE"
-partita_iva: "03584590263"
-social: []
+nome: "Edil Crema"
+ragione_sociale: "Edil Crema Snc di Crema Marcello & C."
+indirizzo: "Via Luigi Rossi 7, 31050 Ponzano Veneto (TV)"
+telefono: "+39 0422 969142"
+email: "info@edilcrema.com"
+pec: "amministrazione@pec.edilcrema.com" # opzionale, ma utile per i fornitori/enti
+partita_iva: "IT03584590263"
+rea: "TV - 282317 "
+
