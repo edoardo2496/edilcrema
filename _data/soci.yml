@@ -1,4 +1,18 @@
-- nome: "DA DEFINIRE"
-  ruolo: "DA DEFINIRE"
-  foto: /assets/img/team/DA_DEFINIRE.jpg
-  bio: "DA DEFINIRE"
+- nome: "Marcello Crema"
+  ruolo: "Socio Fondatore · Direzione Tecnica"
+  foto: "/assets/img/soci/marcello-crema.jpg"
+  esperienza: "In azienda dal 1972"
+  bio: "Supervisiona l'impostazione tecnica dei cantieri e i rapporti storici con committenti e progettisti, garantendo continuità e solidità esecutiva."
+
+- nome: "Franco Crema"
+  ruolo: "Socio · Direttore Tecnico area Residenziale e Direttore Commerciale"
+  foto: "/assets/img/soci/socio-2.jpg"
+  esperienza: "Direzione Tecnica & Sales"
+  bio: "Coordina le squadre in cantiere, l'impiego delle tecnologie costruttive e il controllo qualità nelle opere Residenziali"
+
+- nome: "Stefano Crema"
+  ruolo: "Socio · Direttore Tecnico area Industriale e Direttore Acquisti"
+  foto: "/assets/img/soci/socio-3.jpg"
+  esperienza: "Direzione Tecnica & Ottimizzazione dei Costi"
+  bio: "Coordina le squadre in cantiere nelle opere Industriali e segue la pianificazione economica delle commesse, gli approvvigionamenti e l'interfaccia diretta con ."
+
