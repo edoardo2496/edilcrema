@@ -1,46 +1,38 @@
 ---
 layout: default
 title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal 1972
+description: Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, strutture industriali e opere di urbanizzazione.
 ---
 {% include hero.html %}
 
-<section class="services" id="servizi">
-  <div class="section-label">Servizi</div>
-  <h2 class="section-title">Case, capannoni e territorio.</h2>
-  <div class="service-list">
+<section class="numbers band-surface" id="numeri" aria-label="Edil Crema in numeri">
+  <ul class="numbers-list">
+    {% for n in site.data.numeri %}
+    <li class="number-item">
+      <strong>{{ n.valore }}</strong>
+      <span>{{ n.etichetta }}</span>
+      {% if n.dettaglio %}<p class="number-detail">{{ n.dettaglio }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="services servizi-section" id="servizi" aria-labelledby="servizi-title">
+  <div class="section-header">
+    <p class="section-label">Servizi</p>
+    <h2 class="section-title" id="servizi-title">Case, capannoni e territorio.</h2>
+  </div>
+  <div class="service-list servizi-list">
     {% for s in site.data.servizi %}
       {% include servizio.html s=s %}
     {% endfor %}
   </div>
 </section>
 
-<section class="numbers" id="numeri">
-  {% for n in site.data.numeri %}
-  <div class="number-item">
-    <strong>{{ n.valore }}</strong>
-    <span>{{ n.etichetta }}</span>
-    {% if n.dettaglio %}<p class="number-detail">{{ n.dettaglio }}</p>{% endif %}
+<section class="featured-projects" id="progetti" aria-labelledby="progetti-title">
+  <div class="section-header">
+    <h2 class="section-title" id="progetti-title">Alcuni dei nostri lavori.</h2>
   </div>
-  {% endfor %}
-</section>
-
-<section class="process" id="processo">
-  <div class="section-label">Come lavoriamo</div>
-  <h2 class="section-title">Dalla costruzione al post vendita, con lo stesso interlocutore.</h2>
-  <div class="process-steps">
-    {% for p in site.data.processo %}
-    <div class="process-step">
-      <div class="step-number">{{ forloop.index }}</div>
-      <div class="step-title">{{ p.titolo }}</div>
-      <div class="step-desc">{{ p.testo }}</div>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="featured-projects" id="progetti">
-  <div class="section-label">Progetti</div>
-  <h2 class="section-title">Alcuni dei nostri lavori.</h2>
   <div class="project-grid">
     {% for p in site.progetti limit:3 %}
       {% include progetto-card.html p=p %}
@@ -51,25 +43,42 @@ title: Edil Crema — Costruzioni residenziali, industriali e urbanizzazioni dal
   </div>
 </section>
 
-<section class="about" id="chi-siamo">
-  <div class="section-label">Chi siamo</div>
-  <h2 class="section-title">Cinquant'anni di cantieri nel Nord Est.</h2>
+<section class="process band-concrete" id="processo" aria-labelledby="processo-title">
+  <div class="section-header">
+    <p class="section-label">Come lavoriamo</p>
+    <h2 class="section-title" id="processo-title">Un unico interlocutore, dal cantiere al post vendita.</h2>
+  </div>
+  <ol class="process-steps">
+    {% for p in site.data.processo %}
+    <li class="process-step">
+      <span class="step-number" aria-hidden="true">{{ forloop.index }}</span>
+      <h3 class="step-title">{{ p.titolo }}</h3>
+      <p class="step-desc">{{ p.testo }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="about band-dark" id="chi-siamo" aria-labelledby="about-title">
+  <div class="section-header">
+    <p class="section-label">Chi siamo</p>
+    <h2 class="section-title" id="about-title">Dal 1972, cantieri nel Nord Est.</h2>
+  </div>
   <div class="about-body">
     <p>Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, strutture industriali e opere di urbanizzazione. Passione e impegno per il lavoro ben fatto sono il filo che unisce oltre cinquant'anni di cantieri.</p>
   </div>
-</section>
 
-<section class="soci" id="soci">
-  <div class="section-label">Soci</div>
-  <h2 class="section-title">Un volto diretto su ogni cantiere.</h2>
-  <div class="soci-grid">
-    {% for s in site.data.soci %}
-      {% include socio.html s=s %}
-    {% endfor %}
+  <div class="soci" id="soci">
+    <h3 class="soci-title">Un volto diretto su ogni cantiere.</h3>
+    <div class="soci-grid team-grid">
+      {% for s in site.data.soci %}
+        {% include socio.html s=s %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 
-<section class="cta-section" id="contatto">
-  <h2 class="cta-title">Parliamo del tuo prossimo progetto.</h2>
+<section class="cta-section" id="contatto" aria-labelledby="cta-title">
+  <h2 class="cta-title" id="cta-title">Parliamo del tuo prossimo progetto.</h2>
   <a href="{{ '/contatti.html' | relative_url }}" class="btn-primary">Contattaci</a>
 </section>
