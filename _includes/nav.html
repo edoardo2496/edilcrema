@@ -29,7 +29,10 @@
          {% if page.layout == 'progetto' or page.url contains '/progetti' %}class="is-active" aria-current="page"{% endif %}>Progetti</a>
     </li>
 
-    <li><a href="{{ '/#chi-siamo' | relative_url }}">Chi siamo</a></li>
+    <li>
+  <a href="{{ '/chi-siamo/' | relative_url }}"
+     {% if page.url == '/chi-siamo/' %}class="is-active" aria-current="page"{% endif %}>Chi siamo</a>
+</li>
     <li><a href="{{ '/#soci' | relative_url }}">Soci</a></li>
 
     <li>
