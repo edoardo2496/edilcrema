@@ -5,9 +5,9 @@ hero:
 
 origini:
   paragrafi:
-    - La storia di Edil Crema inizia nel 1972, dalla visione e dall'iniziativa di Marcello Crema, che decide di lasciare il proprio lavoro di imbianchino per intraprendere una nuova strada nel settore delle costruzioni.
+    - "La storia di Edil Crema inizia nel 1972, dalla visione e dall'iniziativa di Marcello Crema, che decide di lasciare il proprio lavoro di imbianchino per intraprendere una nuova strada nel settore delle costruzioni."
     - "Con una scavatrice, un badile e una grande determinazione, dà vita a un'impresa destinata a crescere insieme al territorio veneto. I primi interventi riguardano principalmente opere di urbanizzazione, realizzazione di reti fognarie e asfaltature di lottizzazioni: lavori che contribuiscono allo sviluppo delle infrastrutture e alla trasformazione del tessuto urbano locale."
-  immagine: "/assets/img/brand/storia/storia-2.jpg"
+  immagine: /assets/img/brand/storia/storia-2.jpg
   alt: Scavatore Edil Crema in un cantiere di scavo, anni Settanta
   didascalia: Un cantiere degli anni Settanta
 
@@ -15,16 +15,27 @@ famiglia:
   label: La seconda generazione
   titolo: Una crescita costruita in famiglia
   intro: "L'ingresso della seconda generazione segna una fase importante nella storia di Edil Crema: l'impresa amplia le proprie competenze, diversifica le attività e consolida la propria presenza nel settore delle costruzioni."
-  immagine: "/assets/img/brand/storia/storia-1.jpg"
+  immagine: /assets/img/brand/storia/storia-1.jpg
   alt: Posa di asfalto con vibrofinitrice Vögele
   didascalia: Asfaltature e lottizzazioni
   membri:
     - quando: Inizio anni Ottanta
       nome: Franco Crema
-      testo: Il primogenito entra in azienda e assume progressivamente la responsabilità del settore delle asfaltature e delle lottizzazioni. Con dedizione e competenza consolida le capacità operative dell'impresa.
+      testo: "Il primogenito entra in azienda e assume progressivamente la responsabilità del settore delle asfaltature e delle lottizzazioni. Con dedizione e competenza consolida le capacità operative dell'impresa."
     - quando: Metà anni Ottanta
       nome: Stefano Crema
-      testo: Il secondogenito guida le costruzioni industriali, con grandi edifici prefabbricati e attenzione a tecnica, soluzioni costruttive e innovazione. Segue anche gli acquisti, per l'efficienza dei processi aziendali.
+      testo: "Il secondogenito guida le costruzioni industriali, con grandi edifici prefabbricati e attenzione a tecnica, soluzioni costruttive e innovazione. Segue anche gli acquisti, per l'efficienza dei processi aziendali."
+
+industriale:
+  label: Costruzioni industriali
+  titolo: Dal cantiere al capannone
+  foto:
+    - immagine: /assets/img/brand/storia/storia-4.jpg
+      alt: Pareti prefabbricate in cemento di un capannone in costruzione, con autogru
+      didascalia: Strutture prefabbricate in cantiere
+    - immagine: /assets/img/brand/storia/storia-3.jpg
+      alt: Interno di un capannone industriale con pilastri e lucernari
+      didascalia: Il capannone completato
 
 svolta:
   anno: "2010"
@@ -32,6 +43,9 @@ svolta:
   paragrafi:
     - "Nel 2010, in un contesto economico particolarmente complesso per il settore edilizio, Edil Crema sceglie di intraprendere una nuova fase del proprio percorso, investendo nel comparto residenziale. Una scelta che nasce dalla volontà di evolversi e di mettere l'esperienza maturata negli anni al servizio di un nuovo modo di costruire."
     - "Da oltre quindici anni l'azienda si dedica alla realizzazione di soluzioni abitative attente al comfort, all'efficienza energetica e alla qualità costruttiva. L'obiettivo è realizzare edifici capaci di rispondere alle esigenze dell'abitare contemporaneo, con un'attenzione concreta ai consumi energetici e all'impatto ambientale."
+  immagine: /assets/img/brand/storia/storia-5.jpg
+  alt: Render degli interni di un'abitazione residenziale
+  didascalia: Residenziale, comfort ed efficienza
 
 oggi:
   label: Oggi
