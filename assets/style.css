@@ -1086,6 +1086,13 @@ main > section {
   color: var(--slate-400);
 }
 
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem 1.5rem;
+  margin: 0;
+}
+
 .footer-policies {
   display: flex;
   gap: 1.5rem;
