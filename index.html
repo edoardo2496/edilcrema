@@ -8,9 +8,9 @@ description: "Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, 
 <section class="numbers band-surface" id="numeri" aria-label="Edil Crema in numeri">
   <ul class="numbers-list">
     {% for n in site.data.numeri %}
-    <li class="number-item">
-      <strong>{{ n.valore }}</strong>
-      <span>{{ n.etichetta }}</span>
+    <li class="number-card">
+      <strong class="number-value">{{ n.valore }}</strong>
+      <span class="number-label">{{ n.etichetta }}</span>
       {% if n.dettaglio %}<p class="number-detail">{{ n.dettaglio }}</p>{% endif %}
     </li>
     {% endfor %}
