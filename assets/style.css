@@ -811,10 +811,12 @@ main > section {
   color: var(--color-brand-dark);
 }
 
-.socio-name {
+/* .socio-item davanti: batte `.band-dark h3` quando i soci stanno nella fascia scura */
+.socio-item .socio-name {
   margin: .3rem 0 .7rem;
   padding-inline: 1.6rem;
   font-size: 1.5rem;
+  color: var(--color-primary);
 }
 
 .socio-bio {
