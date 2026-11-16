@@ -329,10 +329,75 @@ main > section {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, .92);
-  backdrop-filter: saturate(1.2) blur(14px);
-  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+  background: rgba(255, 255, 255, .94);
   border-bottom: 1px solid var(--border-color);
+  transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+/* Dopo lo scroll: vetro satinato leggero */
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, .74);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  border-bottom-color: rgba(26, 34, 41, .08);
+  box-shadow: 0 6px 28px rgba(18, 24, 29, .06);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header.is-scrolled { background: rgba(255, 255, 255, .97); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .site-header.is-scrolled {
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Home: header trasparente sopra la foto, testo chiaro */
+body.home .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+body.home .site-header:not(.is-scrolled) {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+body.home .site-header:not(.is-scrolled) .nav-logo,
+body.home .site-header:not(.is-scrolled) .menu-btn span,
+body.home .site-header:not(.is-scrolled) .menu-btn span::before,
+body.home .site-header:not(.is-scrolled) .menu-btn span::after {
+  color: #fff;
+  background-color: #fff;
+}
+
+body.home .site-header:not(.is-scrolled) .nav-logo { background: none; }
+
+body.home .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] span {
+  background-color: transparent;
+}
+
+@media (min-width: 881px) {
+  body.home .site-header:not(.is-scrolled) .nav-links { color: rgba(255, 255, 255, .88); }
+
+  body.home .site-header:not(.is-scrolled) .nav-links > li > a:hover,
+  body.home .site-header:not(.is-scrolled) .nav-links > li > a.is-active:not(.nav-cta) {
+    color: #fff;
+  }
+
+  body.home .site-header:not(.is-scrolled) .nav-cta {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .55);
+  }
+
+  body.home .site-header:not(.is-scrolled) .nav-links > li > a.nav-cta:hover {
+    background: #fff;
+    color: var(--slate-900) !important;
+  }
 }
 
 .site-header nav {
@@ -460,41 +525,73 @@ main > section {
 
 
 /* ==========================================================================
-   07. HERO
+   07. HERO — foto a tutta altezza, testo in basso a sinistra
    ========================================================================== */
 
 .hero {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2.5rem, 6vw, 6.5rem);
-  align-items: center;
-  padding-block: clamp(4rem, 8vw, 7rem);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: calc(var(--header-h) + 4rem) 0;
+  background: var(--slate-900);
+  color: #fff;
 }
 
-.hero-eyebrow {
-  margin-bottom: 1.6rem;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(18, 24, 29, .86) 0%,
+    rgba(18, 24, 29, .40) 48%,
+    rgba(18, 24, 29, .50) 100%
+  );
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  margin: 0;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .hero-title {
-  max-width: 15ch;
-  margin-bottom: 1.7rem;
-  font-size: clamp(2.7rem, 5.6vw, 4.8rem);
-  line-height: 1.03;
+  max-width: 18ch;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.6rem, 6.2vw, 5.4rem);
+  line-height: 1.02;
   letter-spacing: -.03em;
-}
-
-.hero-title em {
-  font-style: italic;
-  font-weight: 400;
-  color: inherit;
+  color: #fff;
+  text-shadow: 0 2px 28px rgba(18, 24, 29, .35);
 }
 
 .hero-body {
   max-width: 52ch;
-  margin-bottom: 2.4rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--text-muted);
+  margin-bottom: 2.2rem;
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, .88);
+}
+
+.hero-body strong {
+  font-weight: 600;
+  color: #fff;
 }
 
 .hero-actions {
@@ -503,28 +600,50 @@ main > section {
   gap: 1rem;
 }
 
-.hero-media img {
-  width: 100%;
-  aspect-ratio: 4 / 4.5;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
+.hero .btn-primary {
+  background: #fff;
+  border-color: #fff;
+  color: var(--slate-900);
+}
+
+.hero .btn-primary:hover {
+  background: var(--slate-100);
+  border-color: var(--slate-100);
+}
+
+.hero .btn-ghost {
+  border-color: rgba(255, 255, 255, .55);
+  color: #fff;
+}
+
+.hero .btn-ghost:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--slate-900);
 }
 
 .hero-sectors {
-  margin-top: 2rem;
-  padding-top: 1.3rem;
-  border-top: 1px solid var(--border-dark);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem 2.25rem;
+  padding-block: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, .22);
 }
 
 .hero-sectors .section-label {
-  margin-bottom: .6rem;
+  margin: 0;
+  color: rgba(255, 255, 255, .7);
+}
+
+.hero-sectors .section-label::before {
+  display: none;
 }
 
 .area-list {
   display: flex;
   flex-wrap: wrap;
-  gap: .6rem 1.9rem;
+  gap: .5rem 1.8rem;
 }
 
 .area-item a {
@@ -533,7 +652,7 @@ main > section {
   gap: .55rem;
   font-size: .95rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #fff;
 }
 
 .area-item a::before {
@@ -545,7 +664,7 @@ main > section {
 }
 
 .area-item a:hover {
-  color: var(--color-brand-dark);
+  color: var(--slate-200);
 }
 
 
@@ -1402,14 +1521,6 @@ button:focus-visible {
   .nav-dropdown a { padding: .5rem .7rem; }
 
   /* Layout */
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .hero-media { max-width: 700px; }
-  .hero-media img { aspect-ratio: 16 / 10; }
-
   .servizio-card {
     grid-template-columns: 1fr;
   }
@@ -1433,8 +1544,6 @@ button:focus-visible {
     flex-direction: column;
     align-items: stretch;
   }
-
-  .hero-media img { aspect-ratio: 4 / 3; }
 
   .footer-grid {
     grid-template-columns: 1fr;
