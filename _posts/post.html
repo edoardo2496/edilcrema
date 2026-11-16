@@ -1,1 +1,24 @@
+---
+layout: default
+---
+<article class="page post">
+  <p class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time>{% if page.categoria %}, {{ page.categoria }}{% endif %}
+  </p>
+  <h1>{{ page.title }}</h1>
 
+  {% if page.cover %}
+  <figure class="post-hero-media">
+    <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}" loading="eager" decoding="async">
+  </figure>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <nav class="post-nav" aria-label="Altri articoli">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}" rel="prev">{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}" rel="next">{{ page.next.title }}</a>{% endif %}
+  </nav>
+</article>
