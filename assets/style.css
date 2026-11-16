@@ -1022,6 +1022,181 @@ main > section {
 
 
 /* ==========================================================================
+   11b. HOME E PAGINE EDITORIALI — numeri, processo, chi siamo, soci, CTA,
+        contatti, anteprime blog
+   ========================================================================== */
+
+/* Numeri: fascia compatta sotto l'hero */
+.numbers {
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.numbers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1.75rem, 3vw, 3rem);
+}
+
+.number-item {
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--slate-900);
+}
+
+.number-item strong {
+  display: block;
+  margin-bottom: .6rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--color-primary);
+}
+
+.number-item span {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+.number-detail {
+  margin: .6rem 0 0;
+  font-size: .95rem;
+  color: var(--text-muted);
+}
+
+/* Processo: sequenza reale, quindi numerata */
+.process-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.process-step {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-dark);
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-brand-dark);
+}
+
+.step-title {
+  margin-bottom: .6rem;
+  font-size: 1.5rem;
+}
+
+.step-desc {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Chi siamo + soci (fascia scura) */
+.about-body {
+  max-width: 60ch;
+  font-size: 1.12rem;
+  line-height: 1.85;
+}
+
+.about-body p {
+  color: var(--text-inverse-muted);
+}
+
+.soci {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border-on-dark);
+}
+
+.soci-title {
+  margin-bottom: 2.25rem;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+/* CTA finale */
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+  background: var(--bg-surface);
+  text-align: center;
+}
+
+.cta-title {
+  max-width: 20ch;
+  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -.025em;
+}
+
+/* Contatti */
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem 3rem;
+  max-width: 900px;
+  padding-top: 2rem;
+  border-top: 1px solid var(--slate-900);
+}
+
+.contact-list dt {
+  margin-bottom: .25rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.contact-list dd {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: var(--color-primary);
+  overflow-wrap: anywhere;
+}
+
+.contact-list a {
+  border-bottom: 1px solid var(--slate-300);
+}
+
+.contact-list a:hover {
+  color: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
+}
+
+/* Blog: anteprime e meta articolo */
+.post-meta {
+  margin-bottom: .6rem;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.post-preview {
+  max-width: 68ch;
+  padding-block: 2.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.post-preview h2 {
+  margin-bottom: .75rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.post-preview h2 a:hover {
+  color: var(--color-brand-dark);
+}
+
+
+/* ==========================================================================
    12. FOOTER
    ========================================================================== */
 
