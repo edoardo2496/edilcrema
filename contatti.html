@@ -1,12 +1,30 @@
 ---
 layout: default
-title: Contatti
+title: Contatti — Edil Crema
+description: Contatta Edil Crema per un sopralluogo o un preventivo: indirizzo, telefono ed email.
 ---
 <div class="page">
-  <div class="section-label">Contatti</div>
   <h1>Parliamone</h1>
-  <p>{{ site.data.azienda.indirizzo }}</p>
-  <p><a href="mailto:{{ site.data.azienda.email }}">{{ site.data.azienda.email }}</a></p>
-  <p><a href="tel:{{ site.data.azienda.telefono }}">{{ site.data.azienda.telefono }}</a></p>
-</div>
+  <p class="page-intro">Scrivici o chiamaci per un sopralluogo o un preventivo.</p>
 
+  <dl class="contact-list">
+    <div>
+      <dt>Indirizzo</dt>
+      <dd><a href="https://www.google.com/maps/search/?api=1&query={{ site.data.azienda.indirizzo | url_encode }}" rel="noopener">{{ site.data.azienda.indirizzo }}</a></dd>
+    </div>
+    <div>
+      <dt>Telefono</dt>
+      <dd><a href="tel:{{ site.data.azienda.telefono | remove: ' ' }}">{{ site.data.azienda.telefono }}</a></dd>
+    </div>
+    <div>
+      <dt>Email</dt>
+      <dd><a href="mailto:{{ site.data.azienda.email }}">{{ site.data.azienda.email }}</a></dd>
+    </div>
+    {% if site.data.azienda.pec %}
+    <div>
+      <dt>PEC</dt>
+      <dd><a href="mailto:{{ site.data.azienda.pec }}">{{ site.data.azienda.pec }}</a></dd>
+    </div>
+    {% endif %}
+  </dl>
+</div>
