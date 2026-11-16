@@ -1,13 +1,15 @@
 <article class="socio-item">
   {% if include.s.foto %}
-    <img class="socio-photo" src="{{ include.s.foto | relative_url }}" alt="{{ include.s.nome }} - {{ include.s.ruolo }}" loading="lazy">
+    <img class="socio-photo" src="{{ include.s.foto | relative_url }}" alt="" loading="lazy" decoding="async">
+  {% else %}
+    <div class="socio-photo socio-photo--placeholder" aria-hidden="true">{{ include.s.nome | slice: 0 }}</div>
   {% endif %}
-  
+
   {% if include.s.esperienza %}
     <span class="socio-badge">{{ include.s.esperienza }}</span>
   {% endif %}
-  
-  <div class="socio-role">{{ include.s.ruolo }}</div>
+
+  <p class="socio-role">{{ include.s.ruolo }}</p>
   <h3 class="socio-name">{{ include.s.nome }}</h3>
-  <p class="socio-bio">{{ include.s.bio }}</p>
+  {% if include.s.bio %}<p class="socio-bio">{{ include.s.bio }}</p>{% endif %}
 </article>
