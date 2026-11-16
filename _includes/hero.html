@@ -1,14 +1,11 @@
-<section class="hero" aria-label="Introduzione Edil Crema">
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero-left">
-    <div class="hero-eyebrow">Edil Crema · Dal 1972 nel Nord Est</div>
-
-    <h1 class="hero-title">
-      Costruiamo valore solidamente <em>radicato nel territorio</em>.
+    <h1 class="hero-title" id="hero-title">
+      Costruiamo nel Nord Est, dal progetto alla consegna.
     </h1>
 
     <p class="hero-body">
-      Dalla progettazione alla consegna: realizziamo opere 
-      <strong>residenziali, industriali e di urbanizzazione</strong> 
+      Opere <strong>residenziali, industriali e di urbanizzazione</strong>
       con tecnologie moderne e controllo diretto su ogni fase del cantiere.
     </p>
 
@@ -20,25 +17,23 @@
 
   <div class="hero-right">
     <figure class="hero-media">
-      <img 
-        src="{{ '/assets/img/progetti/hero-cantiere.jpg' | relative_url }}" 
-        alt="Cantiere edile Edil Crema nel Nord Est" 
+      <img
+        src="{{ '/assets/img/progetti/hero-cantiere.jpg' | relative_url }}"
+        alt="Cantiere edile Edil Crema nel Nord Est"
+        width="1200"
+        height="1350"
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       >
     </figure>
 
     <div class="hero-sectors">
-      <span class="section-label">Aree di intervento</span>
-      <ul class="area-list">
-        <li class="area-item">
-          <a href="{{ '/residenziale.html' | relative_url }}"><strong>Residenziale</strong></a>
-        </li>
-        <li class="area-item">
-          <a href="{{ '/industriale.html' | relative_url }}"><strong>Industriale</strong></a>
-        </li>
-        <li class="area-item">
-          <a href="{{ '/urbanizzazioni.html' | relative_url }}"><strong>Urbanizzazioni</strong></a>
-        </li>
+      <p class="section-label" id="hero-areas-label">Aree di intervento</p>
+      <ul class="area-list" aria-labelledby="hero-areas-label">
+        <li class="area-item"><a href="{{ '/residenziale.html' | relative_url }}">Residenziale</a></li>
+        <li class="area-item"><a href="{{ '/industriale.html' | relative_url }}">Industriale</a></li>
+        <li class="area-item"><a href="{{ '/urbanizzazioni.html' | relative_url }}">Urbanizzazioni</a></li>
       </ul>
     </div>
   </div>
