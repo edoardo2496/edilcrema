@@ -35,7 +35,8 @@
   <div class="footer-bottom">
     <p class="footer-legal">
       <span>© {{ 'now' | date: "%Y" }} {{ site.data.azienda.ragione_sociale }}</span>
-      <span>P.IVA e C.F. {{ site.data.azienda.partita_iva }}</span>
+      <span>P.IVA {{ site.data.azienda.partita_iva }}</span>
+      {% if site.data.azienda.codice_fiscale %}<span>C.F. {{ site.data.azienda.codice_fiscale }}</span>{% endif %}
       <span>REA {{ site.data.azienda.rea }}</span>
     </p>
     <div class="footer-policies">
