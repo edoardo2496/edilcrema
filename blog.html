@@ -1,16 +1,20 @@
 ---
 layout: default
-title: Blog
+title: Blog — Edil Crema
+description: Articoli e approfondimenti di Edil Crema su costruzioni residenziali, industriali e urbanizzazioni.
 ---
 <div class="page">
-  <div class="section-label">Blog</div>
-  <h1>Articoli</h1>
+  <h1>Blog</h1>
   {% for post in site.posts %}
   <article class="post-preview">
-    <div class="section-label">{% if post.categoria %}{{ post.categoria }} · {% endif %}{{ post.date | date: "%d/%m/%Y" }}</div>
+    <p class="post-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>{% if post.categoria %}, {{ post.categoria }}{% endif %}
+    </p>
     <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
     <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
-    <a class="read-more" href="{{ post.url | relative_url }}">Leggi l'articolo →</a>
+    <a class="btn-link" href="{{ post.url | relative_url }}">Leggi l'articolo<span class="visually-hidden">: {{ post.title }}</span></a>
   </article>
-  {% else %}<p>Nessun articolo pubblicato.</p>{% endfor %}
+  {% else %}
+  <p>Nessun articolo pubblicato.</p>
+  {% endfor %}
 </div>
