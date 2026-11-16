@@ -1,7 +1,19 @@
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-left">
+  <figure class="hero-media">
+    <img
+      src="{{ '/assets/img/progetti/hero-cantiere.jpg' | relative_url }}"
+      alt="Cantiere edile Edil Crema nel Nord Est"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    >
+  </figure>
+
+  <div class="hero-content">
     <h1 class="hero-title" id="hero-title">
-      Costruiamo il Nord Est con passione dal 1972.
+      Costruiamo nel Nord Est, dal progetto alla consegna.
     </h1>
 
     <p class="hero-body">
@@ -15,26 +27,12 @@
     </div>
   </div>
 
-  <div class="hero-right">
-    <figure class="hero-media">
-      <img
-        src="{{ '/assets/img/progetti/hero-cantiere.jpg' | relative_url }}"
-        alt="Cantiere edile Edil Crema nel Nord Est"
-        width="1200"
-        height="1350"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      >
-    </figure>
-
-    <div class="hero-sectors">
-      <p class="section-label" id="hero-areas-label">Aree di intervento</p>
-      <ul class="area-list" aria-labelledby="hero-areas-label">
-        <li class="area-item"><a href="{{ '/residenziale.html' | relative_url }}">Residenziale</a></li>
-        <li class="area-item"><a href="{{ '/industriale.html' | relative_url }}">Industriale</a></li>
-        <li class="area-item"><a href="{{ '/urbanizzazioni.html' | relative_url }}">Urbanizzazioni</a></li>
-      </ul>
-    </div>
+  <div class="hero-sectors">
+    <p class="section-label" id="hero-areas-label">Aree di intervento</p>
+    <ul class="area-list" aria-labelledby="hero-areas-label">
+      <li class="area-item"><a href="{{ '/residenziale.html' | relative_url }}">Residenziale</a></li>
+      <li class="area-item"><a href="{{ '/industriale.html' | relative_url }}">Industriale</a></li>
+      <li class="area-item"><a href="{{ '/urbanizzazioni.html' | relative_url }}">Urbanizzazioni</a></li>
+    </ul>
   </div>
 </section>
