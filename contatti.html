@@ -1,103 +1,1263 @@
----
-layout: default
-title: Contatti — Edil Crema
----
-<div class="page">
-  <div class="section-label">Contatti</div>
-  <h1>Parliamo del tuo progetto.</h1>
-  <p class="page-intro">
-    Che si tratti di realizzare la tua nuova casa chiavi in mano, un prefabbricato industriale su misura 
-    o un'opera di urbanizzazione, confrontati direttamente con i nostri soci.
-  </p>
+/* ==========================================================================
+   EDIL CREMA — DESIGN SYSTEM 4.0 · "Ardesia"
+   Ordine: 01 Token · 02 Base · 03 Layout · 04 Titoli di sezione
+           05 Bottoni · 06 Header/Nav · 07 Hero · 08 Card progetto
+           09 Servizi · 10 Team · 11 Pagine interne · 12 Footer
+           13 Utility e accessibilità · 14 Responsive
 
-  <div class="contact-grid">
-    
-    <!-- Colonna Sinistra: Dati diretti e Sede -->
-    <div class="contact-info">
-      <div class="contact-block">
-        <h2>Sede operativa e uffici</h2>
-        <p>{{ site.data.azienda.indirizzo }}</p>
-      </div>
+   Font da caricare in default.html (con preconnect):
+   Newsreader (serif, titoli) — pesi 400, 500, 600 + corsivo 400
+   Hanken Grotesk (sans, testo) — pesi 400, 500, 600, 700
+   Senza i font, funzionano i fallback di sistema (Georgia / system-ui).
+   ========================================================================== */
 
-      <div class="contact-block">
-        <h2>Recapiti diretti</h2>
-        <p>
-          <strong>Telefono:</strong> 
-          <a href="tel:{{ site.data.azienda.telefono | remove: ' ' }}">{{ site.data.azienda.telefono }}</a>
-        </p>
-        <p>
-          <strong>Email:</strong> 
-          <a href="mailto:{{ site.data.azienda.email }}">{{ site.data.azienda.email }}</a>
-        </p>
-        {% if site.data.azienda.pec %}
-          <p><strong>PEC:</strong> {{ site.data.azienda.pec }}</p>
-        {% endif %}
-      </div>
 
-      <div class="contact-block">
-        <h2>Dati societari</h2>
-        <p>
-          {{ site.data.azienda.ragione_sociale }}<br>
-          P.IVA e C.F. {{ site.data.azienda.partita_iva }}
-        </p>
-      </div>
-    </div>
+/* ==========================================================================
+   01. TOKEN
+   ========================================================================== */
 
-    <!-- Colonna Destra: Form profilato sulle 3 macro aree -->
-    <div class="contact-form-wrapper">
-      <h2>Richiedi un primo confronto</h2>
-      
-      <!-- Sostituisci l'URL in action con il tuo endpoint Formspree o Web3Forms -->
-      <form action="https://formspree.io" method="POST" class="contact-form">
-        
-        <div class="form-group">
-          <label for="nome">Nome e Cognome o Azienda *</label>
-          <input type="text" id="nome" name="nome" required placeholder="Es. Mario Rossi / Rossi Srl">
-        </div>
+:root {
+  /* Scala ardesia: dal quasi-nero blu-grigio alla pietra chiara */
+  --slate-950: #12181D;
+  --slate-900: #1A2229;
+  --slate-800: #252F37;
+  --slate-700: #36424B;
+  --slate-600: #4F5C66;
+  --slate-500: #6F7C86;
+  --slate-400: #96A1A9;
+  --slate-300: #B9C1C7;
+  --slate-200: #D6DBDF;
+  --slate-100: #E8EBED;
+  --slate-50:  #F3F5F6;
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required placeholder="nome@esempio.it">
-          </div>
+  /* Accento: azzurro-ardesia, derivato dal blu del marchio ma desaturato */
+  --color-brand: #6F9AB3;
+  --color-brand-dark: #3D6580;
+  --color-brand-light: #E7EEF2;
 
-          <div class="form-group">
-            <label for="telefono">Telefono *</label>
-            <input type="tel" id="telefono" name="telefono" required placeholder="+39 ...">
-          </div>
-        </div>
+  --color-primary: var(--slate-900);
+  --color-primary-soft: var(--slate-800);
+  --color-primary-light: var(--slate-700);
 
-        <div class="form-group">
-          <label for="area">Area di interesse *</label>
-          <select id="area" name="area" required>
-            <option value="" disabled selected>Seleziona il tipo di intervento...</option>
-            {% for s in site.data.servizi %}
-              <option value="{{ s.nome }}">{{ s.nome }}</option>
-            {% endfor %}
-            <option value="Altro">Altra richiesta / Consulenza tecnica</option>
-          </select>
-        </div>
+  --bg-body: #F4F5F6;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: var(--slate-50);
+  --bg-concrete: var(--slate-100);
+  --bg-dark: var(--slate-900);
 
-        <div class="form-group">
-          <label for="luogo">Comune o zona dell'intervento</label>
-          <input type="text" id="luogo" name="luogo" placeholder="Es. Provincia di Treviso / Veneto">
-        </div>
+  --text-main: var(--slate-700);
+  --text-muted: var(--slate-600);
+  --text-inverse: #FFFFFF;
+  --text-inverse-muted: var(--slate-300);
 
-        <div class="form-group">
-          <label for="messaggio">Raccontaci brevemente la tua idea *</label>
-          <textarea id="messaggio" name="messaggio" rows="5" required placeholder="Descrivi le tue esigenze, tempistiche o se hai già un terreno o un progetto..."></textarea>
-        </div>
+  --border-color: var(--slate-200);
+  --border-dark: var(--slate-300);
+  --border-on-dark: rgba(255, 255, 255, .12);
 
-        <div class="form-group form-privacy">
-          <label class="checkbox-label">
-            <input type="checkbox" name="privacy" required>
-            <span>Ho letto l'<a href="{{ '/privacy-policy.html' | relative_url }}">informativa sulla privacy</a> e acconsento al trattamento dei dati per essere ricontattato. *</span>
-          </label>
-        </div>
+  --radius: 4px;
 
-        <button type="submit" class="btn-primary">Invia richiesta</button>
-      </form>
-    </div>
+  /* Ombre tinte in ardesia, sempre molto morbide */
+  --shadow-sm: 0 1px 2px rgba(26, 34, 41, .05), 0 4px 14px rgba(26, 34, 41, .05);
+  --shadow-md: 0 2px 4px rgba(26, 34, 41, .05), 0 16px 36px rgba(26, 34, 41, .10);
 
-  </div>
-</div>
+  --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --container-max: 1240px;
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+  /* Contenuto entro 1240px, sfondo a tutta larghezza */
+  --pad-x: max(var(--gutter), calc((100% - var(--container-max)) / 2 + var(--gutter)));
+  --section-py: clamp(4.5rem, 9vw, 8rem);
+  --header-h: 84px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --transition: .3s var(--ease);
+}
+
+
+/* ==========================================================================
+   02. RESET E BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-body);
+  color: var(--text-main);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--color-primary);
+  line-height: 1.12;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+p {
+  margin-bottom: 1rem;
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--slate-200);
+  color: var(--slate-950);
+}
+
+
+/* ==========================================================================
+   03. LAYOUT — fasce a tutta larghezza, contenuto centrato
+   ========================================================================== */
+
+main > section,
+.page,
+.site-footer,
+.site-header nav {
+  width: 100%;
+  padding-inline: var(--pad-x);
+}
+
+main > section {
+  padding-block: var(--section-py);
+}
+
+.page {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+/* Fasce di sfondo alternate */
+.band-surface { background: var(--bg-surface); }
+.band-concrete { background: var(--bg-concrete); }
+.band-dark {
+  background: var(--bg-dark);
+  color: var(--text-inverse-muted);
+}
+.band-dark h1,
+.band-dark h2,
+.band-dark h3 { color: var(--text-inverse); }
+
+.servizi-section { background: var(--bg-surface); }
+.team-section { background: var(--bg-concrete); }
+
+.page h1 {
+  max-width: 20ch;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.4rem, 5vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -.025em;
+}
+
+.page-intro {
+  max-width: 62ch;
+  margin-bottom: 2.75rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   04. TITOLI DI SEZIONE
+   Etichette in minuscolo con filetto: più sobrie del maiuscolo spaziato
+   ========================================================================== */
+
+.section-label,
+.section-eyebrow,
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  margin-bottom: 1.35rem;
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.section-label::before,
+.section-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: currentColor;
+  opacity: .7;
+}
+
+.section-label a {
+  border-bottom: 1px solid currentColor;
+}
+
+.band-dark .section-label,
+.band-dark .section-eyebrow,
+.site-footer .section-label {
+  color: var(--color-brand);
+}
+
+.section-header {
+  max-width: 68ch;
+  margin-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.section-title {
+  max-width: 22ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+
+.section-subtitle {
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.section-actions {
+  margin-top: 3.25rem;
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   05. BOTTONI
+   ========================================================================== */
+
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: .65rem;
+  min-height: 50px;
+  padding: .85rem 1.8rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition),
+              color var(--transition), box-shadow var(--transition);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--slate-700);
+  border-color: var(--slate-700);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-dark);
+  color: var(--color-primary);
+}
+
+.btn-ghost:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--slate-400);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.btn-link:hover {
+  color: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
+  gap: .8rem;
+}
+
+
+/* ==========================================================================
+   06. HEADER E NAV
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: saturate(1.2) blur(14px);
+  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.site-header nav {
+  min-height: var(--header-h);
+  padding-block: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  color: var(--color-primary);
+}
+
+.nav-logo-img {
+  width: auto;
+  height: 46px;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.1rem, 2.2vw, 2.1rem);
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--slate-600);
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--color-primary);
+}
+
+.nav-links a.is-active:not(.nav-cta) {
+  box-shadow: 0 1px 0 var(--color-brand);
+  padding-bottom: 2px;
+}
+
+.nav-cta {
+  padding: .7rem 1.35rem;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: .88rem;
+}
+
+.nav-cta:hover,
+.nav-cta.is-active {
+  background: var(--slate-700);
+  color: #fff !important;
+}
+
+/* Dropdown */
+.has-dropdown {
+  position: relative;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + .8rem);
+  left: -.8rem;
+  min-width: 250px;
+  padding: .5rem;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+  z-index: 110;
+}
+
+/* ponte invisibile: evita che il menu si chiuda attraversando lo spazio tra link e tendina */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  right: 0;
+  height: 1rem;
+}
+
+.has-dropdown:hover .nav-dropdown,
+.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: .7rem .9rem;
+  border-radius: 2px;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.nav-dropdown a:hover {
+  background: var(--bg-subtle);
+  color: var(--color-primary);
+}
+
+/* Pulsante menu (mobile) */
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+/* ==========================================================================
+   07. HERO
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2.5rem, 6vw, 6.5rem);
+  align-items: center;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.hero-eyebrow {
+  margin-bottom: 1.6rem;
+}
+
+.hero-title {
+  max-width: 15ch;
+  margin-bottom: 1.7rem;
+  font-size: clamp(2.7rem, 5.6vw, 4.8rem);
+  line-height: 1.03;
+  letter-spacing: -.03em;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: inherit;
+}
+
+.hero-body {
+  max-width: 52ch;
+  margin-bottom: 2.4rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-sectors {
+  margin-top: 2rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border-dark);
+}
+
+.hero-sectors .section-label {
+  margin-bottom: .6rem;
+}
+
+.area-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1.9rem;
+}
+
+.area-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.area-item a::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-brand);
+}
+
+.area-item a:hover {
+  color: var(--color-brand-dark);
+}
+
+
+/* ==========================================================================
+   08. CARD PROGETTO
+   ========================================================================== */
+
+.project-grid,
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: clamp(1.5rem, 2.8vw, 2.25rem);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.project-card:hover {
+  border-color: var(--slate-300);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card img,
+.project-cover-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--bg-concrete);
+  transition: transform .8s var(--ease);
+}
+
+.project-card:hover img {
+  transform: scale(1.025);
+}
+
+.project-meta {
+  padding: 1.25rem 1.4rem 0;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.project-card h3 {
+  padding: .35rem 1.4rem 1.6rem;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+/* Filtri */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-bottom: 2.25rem;
+}
+
+.filter-btn {
+  padding: .55rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--border-dark);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: .86rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.is-active,
+.filter-btn[aria-pressed="true"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+
+/* ==========================================================================
+   09. SERVIZI
+   ========================================================================== */
+
+.servizi-list {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5.5rem);
+}
+
+.servizio-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.75rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.servizio-card:nth-child(even) .servizio-media {
+  order: 2;
+}
+
+.servizio-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.servizio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.1rem;
+}
+
+.tag-pill {
+  padding: .25rem .8rem;
+  background: var(--color-brand-light);
+  border-radius: 100px;
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.servizio-content h3 {
+  margin-bottom: .55rem;
+  font-size: clamp(1.7rem, 2.9vw, 2.4rem);
+  letter-spacing: -.02em;
+}
+
+.servizio-sub {
+  margin-bottom: 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-brand-dark);
+}
+
+.servizio-desc {
+  color: var(--text-muted);
+}
+
+.servizio-plus {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-subtle);
+  border-left: 2px solid var(--color-brand);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: .96rem;
+}
+
+.servizio-plus-label {
+  display: block;
+  margin-bottom: .25rem;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.servizio-list {
+  display: grid;
+  gap: .6rem;
+  margin-bottom: 2rem;
+}
+
+.servizio-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: .96rem;
+}
+
+.servizio-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .72em;
+  width: 10px;
+  height: 1px;
+  background: var(--color-brand-dark);
+}
+
+
+/* ==========================================================================
+   10. TEAM / SOCI
+   ========================================================================== */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.socio-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1.75rem;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.socio-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 1.4rem;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--bg-concrete);
+}
+
+.socio-photo--placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--slate-800);
+  color: var(--slate-200);
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.socio-badge {
+  align-self: flex-start;
+  margin: 0 1.6rem .9rem;
+  padding: .25rem .8rem;
+  background: var(--color-brand-light);
+  border-radius: 100px;
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+.socio-role {
+  padding-inline: 1.6rem;
+  font-size: .86rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.socio-name {
+  margin: .3rem 0 .7rem;
+  padding-inline: 1.6rem;
+  font-size: 1.5rem;
+}
+
+.socio-bio {
+  margin: 0;
+  padding-inline: 1.6rem;
+  font-size: .95rem;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   11. PAGINE INTERNE — POST E PROGETTO
+   ========================================================================== */
+
+.post-hero-media,
+.project-hero-media {
+  margin-block: 2rem 2.75rem;
+}
+
+.post-hero-media img,
+.project-hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.post-hero-media img { aspect-ratio: 1200 / 630; }
+.project-hero-media img { aspect-ratio: 3 / 2; }
+
+/* Testo lungo */
+.post-content,
+.project-content {
+  max-width: 68ch;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.post-content h2,
+.project-content h2 {
+  margin: 2.75rem 0 1rem;
+  font-size: 1.85rem;
+}
+
+.post-content h3,
+.project-content h3 {
+  margin: 2.25rem 0 .8rem;
+  font-size: 1.4rem;
+}
+
+.post-content ul,
+.project-content ul {
+  list-style: disc;
+  margin: 0 0 1.2rem 1.4rem;
+}
+
+.post-content ol,
+.project-content ol {
+  margin: 0 0 1.2rem 1.4rem;
+}
+
+.post-content li::marker,
+.project-content li::marker {
+  color: var(--color-brand);
+}
+
+.post-content a,
+.project-content a {
+  color: var(--color-brand-dark);
+  border-bottom: 1px solid var(--slate-300);
+}
+
+.post-content a:hover,
+.project-content a:hover {
+  border-color: var(--color-brand-dark);
+}
+
+.post-content img,
+.project-content img {
+  margin-block: 1.75rem;
+  border-radius: var(--radius);
+}
+
+.post-content blockquote {
+  margin: 2rem 0;
+  padding-left: 1.6rem;
+  border-left: 2px solid var(--color-brand);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-primary);
+}
+
+.post-content table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.post-content th,
+.post-content td {
+  padding: .65rem 1rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.post-content th {
+  background: var(--bg-subtle);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.post-content pre {
+  overflow-x: auto;
+  margin-bottom: 1.2rem;
+  padding: 1.1rem;
+  background: var(--slate-900);
+  border-radius: var(--radius);
+  color: var(--slate-100);
+  font-size: .9rem;
+}
+
+/* Navigazione articolo */
+.post-nav,
+.back-link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.post-nav a:hover,
+.back-link a:hover {
+  color: var(--color-brand-dark);
+}
+
+/* Scheda tecnica progetto */
+.project-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 2.75rem;
+  border-top: 1px solid var(--slate-900);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.spec-item {
+  padding: 1.2rem 1.2rem 1.2rem 0;
+}
+
+.spec-item dt {
+  margin-bottom: .15rem;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--slate-500);
+}
+
+.spec-item dd {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Galleria */
+.project-gallery {
+  margin-top: 4.5rem;
+}
+
+.project-gallery h2 {
+  margin-bottom: 1.75rem;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.project-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 4.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+
+.site-footer {
+  background: var(--slate-950);
+  color: var(--text-inverse-muted);
+  padding-block: clamp(4rem, 7vw, 5.5rem) 0;
+  font-size: .95rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding-bottom: 3.25rem;
+}
+
+.footer-logo {
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  color: var(--text-inverse);
+}
+
+.footer-tagline {
+  max-width: 38ch;
+}
+
+.footer-heading {
+  margin-bottom: 1.15rem;
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand);
+}
+
+.footer-nav {
+  display: grid;
+  gap: .6rem;
+}
+
+.footer-address {
+  font-style: normal;
+  line-height: 1.9;
+}
+
+.site-footer a:hover {
+  color: var(--text-inverse);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .8rem 2rem;
+  padding-block: 1.6rem;
+  border-top: 1px solid var(--border-on-dark);
+  font-size: .82rem;
+  color: var(--slate-400);
+}
+
+.footer-policies {
+  display: flex;
+  gap: 1.5rem;
+}
+
+
+/* ==========================================================================
+   13. UTILITY E ACCESSIBILITÀ
+   ========================================================================== */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  padding: .6rem 1rem;
+  background: #fff;
+  color: #000;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-brand-dark);
+  outline-offset: 4px;
+}
+
+.site-footer a:focus-visible,
+.band-dark a:focus-visible {
+  outline-color: var(--color-brand);
+}
+
+
+/* ==========================================================================
+   14. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-grid .footer-col:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 880px) {
+
+  /* Menu mobile */
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-btn span,
+  .menu-btn span::before,
+  .menu-btn span::after {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--color-primary);
+    position: relative;
+    transition: transform .25s ease, background-color .25s ease;
+  }
+
+  .menu-btn span::before,
+  .menu-btn span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .menu-btn span::before { top: -8px; }
+  .menu-btn span::after { top: 8px; }
+
+  .menu-btn[aria-expanded="true"] span { background: transparent; }
+  .menu-btn[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+    max-height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+    padding: 1.5rem var(--gutter) 2rem;
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    font-size: 1.05rem;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-dropdown {
+    position: static;
+    min-width: 100%;
+    margin-top: .5rem;
+    padding: 0 0 0 .9rem;
+    border: 0;
+    border-left: 1px solid var(--color-brand);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-dropdown::before { display: none; }
+  .nav-dropdown a { padding: .5rem .7rem; }
+
+  /* Layout */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-media { max-width: 700px; }
+  .hero-media img { aspect-ratio: 16 / 10; }
+
+  .servizio-card {
+    grid-template-columns: 1fr;
+  }
+  .servizio-card:nth-child(even) .servizio-media {
+    order: 0;
+  }
+}
+
+@media (max-width: 560px) {
+
+  :root { --header-h: 72px; }
+
+  .nav-logo-img {
+    height: 38px;
+    max-width: 165px;
+  }
+
+  .nav-logo-text { font-size: 1.2rem; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-media img { aspect-ratio: 4 / 3; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-footer .btn-primary,
+  .project-footer .btn-ghost {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
