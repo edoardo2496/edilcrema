@@ -1,9 +1,11 @@
-<a class="project-card" 
-   href="{{ include.p.url | relative_url }}" 
+<a class="project-card"
+   href="{{ include.p.url | relative_url }}"
    data-categoria="{{ include.p.tipologia | slugify }}">
   {% if include.p.cover %}
-    <img src="{{ include.p.cover | relative_url }}" alt="{{ include.p.title }}" loading="lazy">
+    <img src="{{ include.p.cover | relative_url }}" alt="" loading="lazy" decoding="async">
+  {% else %}
+    <div class="project-cover-placeholder" aria-hidden="true"></div>
   {% endif %}
-  <div class="project-meta">{{ include.p.tipologia }} · {{ include.p.luogo }}</div>
+  <p class="project-meta">{{ include.p.tipologia }}{% if include.p.luogo %}, {{ include.p.luogo }}{% endif %}</p>
   <h3>{{ include.p.title }}</h3>
 </a>
