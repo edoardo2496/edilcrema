@@ -1360,6 +1360,121 @@ body.home .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] span {
 }
 
 /* ==========================================================================
+   11c. CHI SIAMO — storia a blocchi
+   ========================================================================== */
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.story-grid--reverse .story-media { order: 2; }
+
+.story-text p { max-width: 56ch; color: var(--text-muted); }
+
+.story-text h2,
+.story-title {
+  max-width: 20ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  letter-spacing: -.02em;
+}
+
+.story-media { margin: 0; }
+
+.story-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.story-media figcaption,
+.gallery-item figcaption {
+  margin-top: .7rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.story-media--inline { margin-top: 2rem; }
+
+.story-year {
+  display: block;
+  margin-bottom: .75rem;
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-brand-dark);
+}
+
+.family {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.family-item {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-dark);
+}
+
+.family-when {
+  display: block;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-brand-dark);
+}
+
+.family-item h3 { margin: .25rem 0 .6rem; font-size: 1.4rem; }
+.family-item p { margin: 0; font-size: .95rem; }
+
+/* Galleria industriale */
+.gallery-section { padding-block: var(--section-py); }
+
+.gallery-grid--two {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.gallery-item { margin: 0; }
+
+/* Citazione finale (fascia scura) */
+.story-quote {
+  max-width: 34ch;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-left: 1.6rem;
+  border-left: 2px solid var(--color-brand);
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--text-inverse);
+}
+
+/* Bottone ghost su fascia scura (teaser in home) */
+.band-dark .btn-ghost {
+  border-color: rgba(255, 255, 255, .55);
+  color: #fff;
+}
+
+.band-dark .btn-ghost:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--slate-900);
+}
+
+@media (max-width: 880px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .story-grid--reverse .story-media { order: 0; }
+}
+
+/* ==========================================================================
    12. FOOTER
    ========================================================================== */
 
