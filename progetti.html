@@ -1,24 +1,25 @@
 ---
 layout: default
 title: Progetti — Edil Crema
+description: Cantieri Edil Crema per area di intervento: residenziale chiavi in mano, prefabbricati industriali su misura e opere di urbanizzazione nel Nord Est.
 ---
 <div class="page">
-  <div class="section-label">Portfolio</div>
   <h1>Progetti</h1>
   <p class="page-intro">
-    Esplora i nostri cantieri suddivisi per area di intervento: residenziale chiavi in mano, 
+    Esplora i nostri cantieri suddivisi per area di intervento: residenziale chiavi in mano,
     prefabbricati industriali su misura e opere di urbanizzazione nel Nord Est.
   </p>
 
-  <!-- Barra dei filtri generata dinamicamente da _data/servizi.yml -->
-  <div class="filter-bar" role="group" aria-label="Filtra progetti per categoria">
-    <button type="button" class="filter-btn is-active" data-filter="tutti">Tutti</button>
+  <!-- Filtri generati da _data/servizi.yml: lo slug del servizio deve coincidere con la tipologia del progetto "slugificata" -->
+  <div class="project-filters" role="group" aria-label="Filtra i progetti per categoria">
+    <button type="button" class="filter-btn" data-filter="tutti" aria-pressed="true">Tutti</button>
     {% for s in site.data.servizi %}
-      <button type="button" class="filter-btn" data-filter="{{ s.slug }}">{{ s.nome }}</button>
+      <button type="button" class="filter-btn" data-filter="{{ s.slug }}" aria-pressed="false">{{ s.nome }}</button>
     {% endfor %}
   </div>
 
-  <!-- Griglia dei progetti -->
+  <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
+
   <div class="project-grid" id="project-grid">
     {% for p in site.progetti %}
       {% include progetto-card.html p=p %}
@@ -28,36 +29,49 @@ title: Progetti — Edil Crema
   </div>
 </div>
 
-<!-- Script leggero per filtrare le card e leggere il parametro ?categoria= nell'URL -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
+  (() => {
+    const buttons = [...document.querySelectorAll('.filter-btn')];
+    const cards = [...document.querySelectorAll('#project-grid .project-card')];
+    const status = document.getElementById('filter-status');
+    const validFilters = new Set(buttons.map(btn => btn.dataset.filter));
 
-    function applyFilter(category) {
-      buttons.forEach(btn => {
-        btn.classList.toggle('is-active', btn.dataset.filter === category);
-      });
+    function applyFilter(category, updateUrl) {
+      let visible = 0;
 
       cards.forEach(card => {
-        const cardCat = card.dataset.categoria;
-        if (category === 'tutti' || cardCat === category) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
+        const show = category === 'tutti' || card.dataset.categoria === category;
+        card.hidden = !show;
+        if (show) visible++;
       });
+
+      buttons.forEach(btn => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.filter === category));
+      });
+
+      if (cards.length) {
+        status.textContent = visible === 0
+          ? 'Nessun progetto in questa categoria.'
+          : visible === 1 ? '1 progetto' : visible + ' progetti';
+      }
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        if (category === 'tutti') {
+          url.searchParams.delete('categoria');
+        } else {
+          url.searchParams.set('categoria', category);
+        }
+        history.replaceState(null, '', url);
+      }
     }
 
     buttons.forEach(btn => {
-      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter, true));
     });
 
-    // Controlla se nell'URL c'è ?categoria=residenziale (o industriale / urbanizzazione)
-    const params = new URLSearchParams(window.location.search);
-    const initialCategory = params.get('categoria');
-    if (initialCategory) {
-      applyFilter(initialCategory);
-    }
-  });
+    // Legge ?categoria= dall'URL; un valore sconosciuto viene ignorato
+    const requested = new URLSearchParams(window.location.search).get('categoria');
+    applyFilter(validFilters.has(requested) ? requested : 'tutti', false);
+  })();
 </script>
