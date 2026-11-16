@@ -603,12 +603,24 @@ main > section {
   line-height: 1.25;
 }
 
+/* display:flex sulla card annullerebbe l'attributo hidden */
+.project-card[hidden] {
+  display: none;
+}
+
 /* Filtri */
 .project-filters {
   display: flex;
   flex-wrap: wrap;
   gap: .6rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-status {
+  min-height: 1.7em;
+  margin-bottom: 1.5rem;
+  font-size: .92rem;
+  color: var(--text-muted);
 }
 
 .filter-btn {
