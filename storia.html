@@ -13,21 +13,31 @@ permalink: /chi-siamo/
 </section>
 
 <section class="band-surface" aria-label="Le origini">
-  <div class="story-grid">
-    <span class="story-year" aria-hidden="true">1972</span>
-    <div class="story-text">
-      {% for p in s.origini.paragrafi %}<p{% if forloop.first %} class="story-lead"{% endif %}>{{ p }}</p>{% endfor %}
+  <div class="overlap overlap--left">
+    <figure class="overlap__media">
+      <img src="{{ s.origini.immagine | relative_url }}" alt="{{ s.origini.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ s.origini.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <span class="story-year" aria-hidden="true">1972</span>
+      {% for p in s.origini.paragrafi %}<p>{{ p }}</p>{% endfor %}
     </div>
   </div>
 </section>
 
 <section class="band-concrete" aria-labelledby="famiglia-title">
-  <div class="section-header">
-    <p class="section-label">{{ s.famiglia.label }}</p>
-    <h2 class="section-title" id="famiglia-title">{{ s.famiglia.titolo }}</h2>
-    <p class="section-subtitle">{{ s.famiglia.intro }}</p>
+  <div class="overlap overlap--right">
+    <figure class="overlap__media">
+      <img src="{{ s.famiglia.immagine | relative_url }}" alt="{{ s.famiglia.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ s.famiglia.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <p class="section-label">{{ s.famiglia.label }}</p>
+      <h2 class="section-title" id="famiglia-title">{{ s.famiglia.titolo }}</h2>
+      <p>{{ s.famiglia.intro }}</p>
+    </div>
   </div>
-  <div class="family">
+  <div class="family family--wide">
     {% for m in s.famiglia.membri %}
     <article class="family-item">
       <span class="family-when">{{ m.quando }}</span>
@@ -41,7 +51,7 @@ permalink: /chi-siamo/
 <section class="band-surface" aria-labelledby="industriale-title">
   {% for f in s.industriale.foto %}
   {% if forloop.first %}
-  <div class="overlap overlap--right">
+  <div class="overlap overlap--left">
     <figure class="overlap__media">
       <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
       <figcaption>{{ f.didascalia }}</figcaption>
@@ -52,7 +62,7 @@ permalink: /chi-siamo/
     </div>
   </div>
   {% else %}
-  <div class="overlap overlap--plain">
+  <div class="overlap overlap--plain overlap--right">
     <figure class="overlap__media">
       <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
       <figcaption>{{ f.didascalia }}</figcaption>
@@ -63,7 +73,7 @@ permalink: /chi-siamo/
 </section>
 
 <section class="band-concrete" aria-labelledby="residenziale-title">
-  <div class="overlap overlap--left">
+  <div class="overlap overlap--right">
     <figure class="overlap__media">
       <img src="{{ s.residenziale.immagine | relative_url }}" alt="{{ s.residenziale.alt }}" loading="lazy" decoding="async">
       <figcaption>{{ s.residenziale.didascalia }}</figcaption>
