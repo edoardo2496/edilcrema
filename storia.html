@@ -1,91 +1,82 @@
 ---
 layout: default
-title: Chi siamo
+title: "Chi siamo — Edil Crema"
 description: "La storia di Edil Crema: dal 1972 costruiamo il territorio, tra urbanizzazioni, costruzioni industriali e residenziale."
 permalink: /chi-siamo/
 ---
 {% assign s = site.data["chi-siamo"] %}
 
-<section class="page">
+<section class="story-open band-dark" aria-labelledby="storia-title">
   <p class="section-label">{{ s.hero.label }}</p>
-  <h1>{{ s.hero.titolo }}</h1>
-  <p class="page-intro">{{ s.hero.intro }}</p>
+  <h1 id="storia-title">{{ s.hero.titolo }}</h1>
+  <p class="story-intro">{{ s.hero.intro }}</p>
+</section>
 
+<section class="band-surface" aria-label="Le origini">
   <div class="story-grid">
+    <span class="story-year" aria-hidden="true">1972</span>
     <div class="story-text">
-      {% for p in s.origini.paragrafi %}<p>{{ p }}</p>{% endfor %}
+      {% for p in s.origini.paragrafi %}<p{% if forloop.first %} class="story-lead"{% endif %}>{{ p }}</p>{% endfor %}
     </div>
-    <figure class="story-media">
-      <img src="{{ s.origini.immagine | relative_url }}" alt="{{ s.origini.alt }}" loading="lazy">
-      <figcaption>{{ s.origini.didascalia }}</figcaption>
-    </figure>
   </div>
 </section>
 
-<section class="band-surface">
-  <div class="story-grid story-grid--reverse">
-    <div class="story-text">
-      <p class="section-label">{{ s.famiglia.label }}</p>
-      <h2>{{ s.famiglia.titolo }}</h2>
-      <p>{{ s.famiglia.intro }}</p>
-      <div class="family">
-        {% for m in s.famiglia.membri %}
-        <div class="family-item">
-          <span class="family-when">{{ m.quando }}</span>
-          <h3>{{ m.nome }}</h3>
-          <p>{{ m.testo }}</p>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <figure class="story-media">
-      <img src="{{ s.famiglia.immagine | relative_url }}" alt="{{ s.famiglia.alt }}" loading="lazy">
-      <figcaption>{{ s.famiglia.didascalia }}</figcaption>
-    </figure>
+<section class="band-concrete" aria-labelledby="famiglia-title">
+  <div class="section-header">
+    <p class="section-label">{{ s.famiglia.label }}</p>
+    <h2 class="section-title" id="famiglia-title">{{ s.famiglia.titolo }}</h2>
+    <p class="section-subtitle">{{ s.famiglia.intro }}</p>
+  </div>
+  <div class="family">
+    {% for m in s.famiglia.membri %}
+    <article class="family-item">
+      <span class="family-when">{{ m.quando }}</span>
+      <h3>{{ m.nome }}</h3>
+      <p>{{ m.testo }}</p>
+    </article>
+    {% endfor %}
   </div>
 </section>
 
-<section class="gallery-section">
+<section class="band-surface" aria-labelledby="industriale-title">
   <div class="section-header">
     <p class="section-label">{{ s.industriale.label }}</p>
-    <h2 class="section-title">{{ s.industriale.titolo }}</h2>
+    <h2 class="section-title" id="industriale-title">{{ s.industriale.titolo }}</h2>
   </div>
   <div class="gallery-grid gallery-grid--two">
     {% for f in s.industriale.foto %}
     <figure class="gallery-item">
-      <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy">
+      <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
       <figcaption>{{ f.didascalia }}</figcaption>
     </figure>
     {% endfor %}
   </div>
 </section>
 
-<section class="band-concrete">
-  <div class="story-grid">
-    <div>
-      <span class="story-year">{{ s.svolta.anno }}</span>
-      <h2 class="story-title">{{ s.svolta.titolo }}</h2>
-      <figure class="story-media story-media--inline">
-        <img src="{{ s.svolta.immagine | relative_url }}" alt="{{ s.svolta.alt }}" loading="lazy">
-        <figcaption>{{ s.svolta.didascalia }}</figcaption>
-      </figure>
-    </div>
+<section class="band-concrete" aria-labelledby="residenziale-title">
+  <div class="story-grid story-grid--media story-grid--reverse">
     <div class="story-text">
-      {% for p in s.svolta.paragrafi %}<p>{{ p }}</p>{% endfor %}
+      <p class="section-label">{{ s.residenziale.label }}</p>
+      <h2 class="section-title" id="residenziale-title">{{ s.residenziale.titolo }}</h2>
+      {% for p in s.residenziale.paragrafi %}<p>{{ p }}</p>{% endfor %}
     </div>
+    <figure class="story-media">
+      <img src="{{ s.residenziale.immagine | relative_url }}" alt="{{ s.residenziale.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ s.residenziale.didascalia }}</figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="band-dark">
+<section class="band-dark" aria-labelledby="oggi-title">
   <p class="section-label">{{ s.oggi.label }}</p>
-  <h2 class="section-title">{{ s.oggi.titolo }}</h2>
+  <h2 class="section-title" id="oggi-title">{{ s.oggi.titolo }}</h2>
   <div class="about-body">
     {% for p in s.oggi.paragrafi %}<p>{{ p }}</p>{% endfor %}
   </div>
   <blockquote class="story-quote">{{ s.oggi.citazione }}</blockquote>
 </section>
 
-<section class="cta-section">
-  <h2 class="cta-title">Parliamo del tuo prossimo progetto.</h2>
+<section class="cta-section" aria-labelledby="cta-title">
+  <h2 class="cta-title" id="cta-title">Parliamo del tuo prossimo progetto.</h2>
   <a href="{{ '/contatti.html' | relative_url }}" class="btn-primary">Contattaci</a>
 </section>
