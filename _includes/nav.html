@@ -16,12 +16,28 @@
   </button>
 
   <ul class="nav-links" id="nav-links">
-    <li><a href="{{ '/residenziale.html' | relative_url }}"{% if page.url == '/residenziale.html' %} class="is-active" aria-current="page"{% endif %}>Residenziale</a></li>
-    <li><a href="{{ '/industriale.html' | relative_url }}"{% if page.url == '/industriale.html' %} class="is-active" aria-current="page"{% endif %}>Industriale</a></li>
-    <li><a href="{{ '/urbanizzazioni.html' | relative_url }}"{% if page.url == '/urbanizzazioni.html' %} class="is-active" aria-current="page"{% endif %}>Urbanizzazioni</a></li>
-    <li><a href="{{ '/progetti.html' | relative_url }}"{% if page.layout == 'progetto' or page.url contains '/progetti' %} class="is-active" aria-current="page"{% endif %}>Progetti</a></li>
-    <li><a href="{{ '/chi-siamo/' | relative_url }}"{% if page.url == '/chi-siamo/' %} class="is-active" aria-current="page"{% endif %}>Chi siamo</a></li>
-    <li><a href="{{ '/blog.html' | relative_url }}"{% if page.layout == 'post' or page.url == '/blog.html' %} class="is-active" aria-current="page"{% endif %}>Blog</a></li>
+    <li class="has-dropdown">
+      <a href="{{ '/#servizi' | relative_url }}">Servizi</a>
+      <ul class="nav-dropdown">
+        {% for s in site.data.servizi %}
+          <li><a href="{{ '/#' | append: s.slug | relative_url }}">{{ s.nome | escape }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+
+    <li>
+      <a href="{{ '/progetti.html' | relative_url }}"
+         {% if page.layout == 'progetto' or page.url contains '/progetti' %}class="is-active" aria-current="page"{% endif %}>Progetti</a>
+    </li>
+
+    <li><a href="{{ '/#chi-siamo' | relative_url }}">Chi siamo</a></li>
+    <li><a href="{{ '/#soci' | relative_url }}">Soci</a></li>
+
+    <li>
+      <a href="{{ '/blog.html' | relative_url }}"
+         {% if page.layout == 'post' or page.url == '/blog.html' %}class="is-active" aria-current="page"{% endif %}>Blog</a>
+    </li>
+
     <li>
       <a href="{{ '/contatti.html' | relative_url }}"
          class="nav-cta{% if page.url == '/contatti.html' %} is-active{% endif %}"
