@@ -30,10 +30,10 @@ industriale:
   label: Costruzioni industriali
   titolo: Dalle infrastrutture alle costruzioni
   foto:
-    - immagine: /assets/img/brand/storia/storia-4.jpg
+    - immagine: /assets/img/brand/storia/industriale-4.jpg
       alt: Pareti prefabbricate in cemento di un capannone in costruzione, con autogru
       didascalia: Strutture prefabbricate in cantiere
-    - immagine: /assets/img/brand/storia/storia-3.jpg
+    - immagine: /assets/img/brand/storia/industriale-3.jpg
       alt: Interno di un capannone industriale con pilastri e lucernari
       didascalia: Il capannone completato
 
