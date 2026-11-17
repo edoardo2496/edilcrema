@@ -39,31 +39,40 @@ permalink: /chi-siamo/
 </section>
 
 <section class="band-surface" aria-labelledby="industriale-title">
-  <div class="section-header">
-    <p class="section-label">{{ s.industriale.label }}</p>
-    <h2 class="section-title" id="industriale-title">{{ s.industriale.titolo }}</h2>
-  </div>
-  <div class="gallery-grid gallery-grid--two">
-    {% for f in s.industriale.foto %}
-    <figure class="gallery-item">
+  {% for f in s.industriale.foto %}
+  {% if forloop.first %}
+  <div class="overlap overlap--right">
+    <figure class="overlap__media">
       <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
       <figcaption>{{ f.didascalia }}</figcaption>
     </figure>
-    {% endfor %}
+    <div class="overlap__card">
+      <p class="section-label">{{ s.industriale.label }}</p>
+      <h2 class="section-title" id="industriale-title">{{ s.industriale.titolo }}</h2>
+    </div>
   </div>
+  {% else %}
+  <div class="overlap overlap--plain">
+    <figure class="overlap__media">
+      <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ f.didascalia }}</figcaption>
+    </figure>
+  </div>
+  {% endif %}
+  {% endfor %}
 </section>
 
 <section class="band-concrete" aria-labelledby="residenziale-title">
-  <div class="story-grid story-grid--media story-grid--reverse">
-    <div class="story-text">
+  <div class="overlap overlap--left">
+    <figure class="overlap__media">
+      <img src="{{ s.residenziale.immagine | relative_url }}" alt="{{ s.residenziale.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ s.residenziale.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
       <p class="section-label">{{ s.residenziale.label }}</p>
       <h2 class="section-title" id="residenziale-title">{{ s.residenziale.titolo }}</h2>
       {% for p in s.residenziale.paragrafi %}<p>{{ p }}</p>{% endfor %}
     </div>
-    <figure class="story-media">
-      <img src="{{ s.residenziale.immagine | relative_url }}" alt="{{ s.residenziale.alt }}" loading="lazy" decoding="async">
-      <figcaption>{{ s.residenziale.didascalia }}</figcaption>
-    </figure>
   </div>
 </section>
 
