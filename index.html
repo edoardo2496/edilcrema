@@ -59,14 +59,16 @@ description: "Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, 
   </ol>
 </section>
 
+{% assign storia = site.data["chi-siamo"] %}
 <section class="about band-dark" id="chi-siamo" aria-labelledby="about-title">
   <div class="section-header">
-    <p class="section-label">Chi siamo</p>
-    <h2 class="section-title" id="about-title">Dal 1972, cantieri nel Nord Est.</h2>
+    <p class="section-label">{{ storia.hero.label }}</p>
+    <h2 class="section-title" id="about-title">{{ storia.hero.titolo }}</h2>
   </div>
   <div class="about-body">
-    <p>Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, strutture industriali e opere di urbanizzazione. Passione e impegno per il lavoro ben fatto sono il filo che unisce oltre cinquant'anni di cantieri.</p>
+    <p>{{ storia.origini.paragrafi[0] }}</p>
   </div>
+  <a href="{{ '/chi-siamo/' | relative_url }}" class="btn-ghost about-link">Leggi la nostra storia</a>
 
   <div class="soci" id="soci">
     <h3 class="soci-title">Un volto diretto su ogni cantiere.</h3>
