@@ -60,23 +60,105 @@ description: "Dal 1972 Edil Crema costruisce nel Nord Est edifici residenziali, 
 </section>
 
 {% assign storia = site.data["chi-siamo"] %}
-<section class="about band-dark" id="chi-siamo" aria-labelledby="about-title">
-  <div class="section-header">
-    <p class="section-label">{{ storia.hero.label }}</p>
-    <h2 class="section-title" id="about-title">{{ storia.hero.titolo }}</h2>
-  </div>
-  <div class="about-body">
-    <p>{{ storia.origini.paragrafi[0] }}</p>
-  </div>
-  <a href="{{ '/chi-siamo/' | relative_url }}" class="btn-ghost about-link">Leggi la nostra storia</a>
 
-  <div class="soci" id="soci">
-    <h3 class="soci-title">Un volto diretto su ogni cantiere.</h3>
-    <div class="soci-grid team-grid">
-      {% for s in site.data.soci %}
-        {% include socio.html s=s %}
-      {% endfor %}
+<section class="story-open band-dark" id="chi-siamo" aria-labelledby="storia-title">
+  <p class="section-label">{{ storia.hero.label }}</p>
+  <h2 id="storia-title">{{ storia.hero.titolo }}</h2>
+  <p class="story-intro">{{ storia.hero.intro }}</p>
+</section>
+
+<section class="band-surface" aria-label="Le origini">
+  <div class="overlap overlap--left">
+    <figure class="overlap__media">
+      <img src="{{ storia.origini.immagine | relative_url }}" alt="{{ storia.origini.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ storia.origini.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <span class="story-year" aria-hidden="true">1972</span>
+      {% for p in storia.origini.paragrafi %}<p>{{ p }}</p>{% endfor %}
     </div>
+  </div>
+</section>
+
+<section class="band-concrete" aria-labelledby="famiglia-title">
+  <div class="overlap overlap--right">
+    <figure class="overlap__media">
+      <img src="{{ storia.famiglia.immagine | relative_url }}" alt="{{ storia.famiglia.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ storia.famiglia.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <p class="section-label">{{ storia.famiglia.label }}</p>
+      <h3 class="section-title" id="famiglia-title">{{ storia.famiglia.titolo }}</h3>
+      <p>{{ storia.famiglia.intro }}</p>
+    </div>
+  </div>
+  <div class="family family--wide">
+    {% for m in storia.famiglia.membri %}
+    <article class="family-item">
+      <span class="family-when">{{ m.quando }}</span>
+      <h4>{{ m.nome }}</h4>
+      <p>{{ m.testo }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band-surface" aria-labelledby="industriale-title">
+  {% for f in storia.industriale.foto %}
+  {% if forloop.first %}
+  <div class="overlap overlap--left">
+    <figure class="overlap__media">
+      <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ f.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <p class="section-label">{{ storia.industriale.label }}</p>
+      <h3 class="section-title" id="industriale-title">{{ storia.industriale.titolo }}</h3>
+    </div>
+  </div>
+  {% else %}
+  <div class="overlap overlap--plain overlap--right">
+    <figure class="overlap__media">
+      <img src="{{ f.immagine | relative_url }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ f.didascalia }}</figcaption>
+    </figure>
+  </div>
+  {% endif %}
+  {% endfor %}
+</section>
+
+<section class="band-concrete" aria-labelledby="residenziale-title">
+  <div class="overlap overlap--right">
+    <figure class="overlap__media">
+      <img src="{{ storia.residenziale.immagine | relative_url }}" alt="{{ storia.residenziale.alt }}" loading="lazy" decoding="async">
+      <figcaption>{{ storia.residenziale.didascalia }}</figcaption>
+    </figure>
+    <div class="overlap__card">
+      <p class="section-label">{{ storia.residenziale.label }}</p>
+      <h3 class="section-title" id="residenziale-title">{{ storia.residenziale.titolo }}</h3>
+      {% for p in storia.residenziale.paragrafi %}<p>{{ p }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band-dark" aria-labelledby="oggi-title">
+  <p class="section-label">{{ storia.oggi.label }}</p>
+  <h3 class="section-title" id="oggi-title">{{ storia.oggi.titolo }}</h3>
+  <div class="about-body">
+    {% for p in storia.oggi.paragrafi %}<p>{{ p }}</p>{% endfor %}
+  </div>
+  <blockquote class="story-quote">{{ storia.oggi.citazione }}</blockquote>
+</section>
+
+<section class="band-concrete" id="soci" aria-labelledby="soci-title">
+  <div class="section-header">
+    <p class="section-label">Soci</p>
+    <h2 class="section-title" id="soci-title">Un volto diretto su ogni cantiere.</h2>
+  </div>
+  <div class="soci-grid team-grid">
+    {% for s in site.data.soci %}
+      {% include socio.html s=s %}
+    {% endfor %}
   </div>
 </section>
 
