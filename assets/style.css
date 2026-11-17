@@ -356,45 +356,45 @@ main > section {
 }
 
 /* Home: header trasparente sopra la foto, testo chiaro */
-body.home .site-header {
+body.has-hero .site-header {
   position: fixed;
   left: 0;
   right: 0;
 }
 
-body.home .site-header:not(.is-scrolled) {
+body.has-hero .site-header:not(.is-scrolled) {
   background: transparent;
   border-bottom-color: transparent;
 }
 
-body.home .site-header:not(.is-scrolled) .nav-logo,
-body.home .site-header:not(.is-scrolled) .menu-btn span,
-body.home .site-header:not(.is-scrolled) .menu-btn span::before,
-body.home .site-header:not(.is-scrolled) .menu-btn span::after {
+body.has-hero .site-header:not(.is-scrolled) .nav-logo,
+body.has-hero .site-header:not(.is-scrolled) .menu-btn span,
+body.has-hero .site-header:not(.is-scrolled) .menu-btn span::before,
+body.has-hero .site-header:not(.is-scrolled) .menu-btn span::after {
   color: #fff;
   background-color: #fff;
 }
 
-body.home .site-header:not(.is-scrolled) .nav-logo { background: none; }
+body.has-hero .site-header:not(.is-scrolled) .nav-logo { background: none; }
 
-body.home .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] span {
+body.has-hero .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] span {
   background-color: transparent;
 }
 
 @media (min-width: 881px) {
-  body.home .site-header:not(.is-scrolled) .nav-links { color: rgba(255, 255, 255, .88); }
+  body.has-hero .site-header:not(.is-scrolled) .nav-links { color: rgba(255, 255, 255, .88); }
 
-  body.home .site-header:not(.is-scrolled) .nav-links > li > a:hover,
-  body.home .site-header:not(.is-scrolled) .nav-links > li > a.is-active:not(.nav-cta) {
+  body.has-hero .site-header:not(.is-scrolled) .nav-links > li > a:hover,
+  body.has-hero .site-header:not(.is-scrolled) .nav-links > li > a.is-active:not(.nav-cta) {
     color: #fff;
   }
 
-  body.home .site-header:not(.is-scrolled) .nav-cta {
+  body.has-hero .site-header:not(.is-scrolled) .nav-cta {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, .55);
   }
 
-  body.home .site-header:not(.is-scrolled) .nav-links > li > a.nav-cta:hover {
+  body.has-hero .site-header:not(.is-scrolled) .nav-links > li > a.nav-cta:hover {
     background: #fff;
     color: var(--slate-900) !important;
   }
@@ -1359,6 +1359,7 @@ body.home .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] span {
   color: var(--color-brand-dark);
 }
 
+
 /* ==========================================================================
    11c. CHI SIAMO — storia a blocchi
    ========================================================================== */
@@ -1723,5 +1724,91 @@ button:focus-visible {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================================
+   AGGIUNTE — da incollare in fondo al CSS (dopo la sezione 14)
+   Pagine con foto in testa (servizi) e apertura della pagina Chi siamo
+   ========================================================================== */
+
+/* Pagine con foto in testa: servizi */
+.hero--page {
+  min-height: 68vh;
+  min-height: 68svh;
+}
+
+.hero--page .hero-content {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.hero--page .hero-title {
+  font-size: clamp(2.4rem, 5.4vw, 4.6rem);
+}
+
+.servizio-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.servizio-lead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--color-primary);
+}
+
+.servizio-side .servizio-plus:first-child {
+  margin-top: 0;
+}
+
+.servizio-projects .section-header {
+  margin-bottom: 2.25rem;
+}
+
+.about-link {
+  margin-top: 2rem;
+}
+
+/* Chi siamo: apertura scura e paragrafo d'attacco */
+.story-open {
+  padding-block: clamp(5rem, 11vw, 9rem) clamp(4rem, 8vw, 6.5rem);
+}
+
+.story-open h1 {
+  max-width: 15ch;
+  margin-bottom: 1.75rem;
+  font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+  line-height: 1.02;
+  letter-spacing: -.03em;
+}
+
+.story-intro {
+  max-width: 34ch;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--slate-300);
+}
+
+.story-text .story-lead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.5;
+  color: var(--color-primary);
+}
+
+.story-text .section-label {
+  margin-bottom: 1.35rem;
+}
+
+@media (max-width: 880px) {
+  .servizio-intro-grid {
+    grid-template-columns: 1fr;
   }
 }
