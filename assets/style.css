@@ -1894,8 +1894,23 @@ button:focus-visible {
 .overlap--right .overlap__card { grid-column: 1 / span 6; }
 .overlap--right .overlap__media figcaption { text-align: right; }
 
-/* Solo foto */
+/* Solo foto (a sinistra, oppure a destra con --right) */
 .overlap--plain .overlap__media { grid-column: 1 / span 8; }
+.overlap--plain.overlap--right .overlap__media { grid-column: 5 / -1; }
+
+/* Anno nella scheda */
+.overlap__card .story-year {
+  margin-bottom: .5rem;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  color: var(--color-brand);
+}
+
+/* Membri della famiglia sotto la foto */
+.family--wide {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
 
 @media (max-width: 880px) {
   .overlap {
