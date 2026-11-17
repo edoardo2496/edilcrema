@@ -1433,7 +1433,8 @@ body.has-hero .site-header:not(.is-scrolled) .menu-btn[aria-expanded="true"] spa
   color: var(--color-brand-dark);
 }
 
-.family-item h3 { margin: .25rem 0 .6rem; font-size: 1.4rem; }
+.family-item h3,
+.family-item h4 { margin: .25rem 0 .6rem; font-size: 1.4rem; }
 .family-item p { margin: 0; font-size: .95rem; }
 
 /* Galleria industriale */
@@ -1778,7 +1779,8 @@ button:focus-visible {
   padding-block: clamp(5rem, 11vw, 9rem) clamp(4rem, 8vw, 6.5rem);
 }
 
-.story-open h1 {
+.story-open h1,
+.story-open h2 {
   max-width: 15ch;
   margin-bottom: 1.75rem;
   font-size: clamp(2.8rem, 6.4vw, 5.6rem);
