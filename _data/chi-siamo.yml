@@ -7,11 +7,17 @@ origini:
   paragrafi:
     - "La storia di Edil Crema inizia nel 1972, dalla visione e dall'iniziativa di Marcello Crema, che decide di lasciare il proprio lavoro di imbianchino per intraprendere una nuova strada nel settore delle costruzioni."
     - "Con una scavatrice, un badile e una grande determinazione, dà vita a un'impresa destinata a crescere insieme al territorio veneto. I primi interventi riguardano principalmente opere di urbanizzazione, realizzazione di reti fognarie e asfaltature di lottizzazioni: lavori che contribuiscono allo sviluppo delle infrastrutture e alla trasformazione del tessuto urbano locale."
+  immagine: /assets/img/brand/storia/storia-1.jpg
+  alt: Escavatore cingolato rosso in uno scavo lungo una strada cittadina, con operai e auto d'epoca
+  didascalia: Gli anni degli esordi
 
 famiglia:
   label: La seconda generazione
   titolo: Una crescita costruita in famiglia
   intro: "L'ingresso della seconda generazione segna una fase importante nella storia di Edil Crema: l'impresa amplia le proprie competenze, diversifica le attività e consolida la propria presenza nel settore delle costruzioni."
+  immagine: /assets/img/brand/storia/storia-2.jpg
+  alt: Operai al lavoro dietro una vibrofinitrice gialla che stende l'asfalto, fotografia d'epoca
+  didascalia: Asfaltature e lottizzazioni
   membri:
     - quando: Inizio anni Ottanta
       nome: Franco Crema
