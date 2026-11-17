@@ -29,14 +29,18 @@ famiglia:
 industriale:
   label: Costruzioni industriali
   titolo: Dalle infrastrutture alle costruzioni
+  paragrafi:
+    - "Dalle opere di urbanizzazione ai capannoni il passo è naturale: chi sa preparare il terreno, gestire gli scavi e coordinare i cantieri conosce già le fondamenta di ogni costruzione. È da questa esperienza che Edil Crema sviluppa le costruzioni industriali, realizzando edifici per le imprese del territorio."
+    - "La prefabbricazione permette di costruire con tempi certi e qualità costante: le strutture vengono progettate con precisione e montate in cantiere, riducendo imprevisti e fermi. Un metodo che l'impresa affina da decenni, adattando ogni capannone alle esigenze produttive di chi lo userà."
+    - "Anche qui vale il principio che guida tutta l'azienda: chi decide è lo stesso che esegue. Un unico interlocutore segue il cliente dal progetto alla consegna, con la garanzia di un'esecuzione curata in ogni fase."
   foto:
     - immagine: /assets/img/brand/storia/industriale-4.JPG
       alt: Pareti prefabbricate in cemento di un capannone in costruzione, con autogru
       didascalia: Strutture prefabbricate in cantiere
     - immagine: /assets/img/brand/storia/industriale-3.JPG
       alt: Interno di un capannone industriale con pilastri e lucernari
-      didascalia: Il capannone completato
-
+      didascalia: Il capannone in fase di realizzazione
+      
 residenziale:
   label: L'evoluzione dell'impresa
   titolo: Nuove esigenze, nuove costruzioni
@@ -46,7 +50,7 @@ residenziale:
     - "Negli anni, particolare attenzione viene dedicata al comfort abitativo, all'efficienza energetica e alla qualità costruttiva, con l'obiettivo di realizzare edifici funzionali, durevoli e attenti all'impatto ambientale."
   immagine: /assets/img/brand/storia/storia-5.jpg
   alt: Render degli interni di un'abitazione residenziale
-  didascalia: Costruzioni residenziali
+  didascalia: Interni delle nostre soluzioni residenziali
 
 oggi:
   label: Oggi
