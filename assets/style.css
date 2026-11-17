@@ -1812,3 +1812,107 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   11d. CHI SIAMO — foto a tre quarti con scheda di testo sovrapposta
+   ========================================================================== */
+
+.overlap {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: stretch;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.overlap + .overlap {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.overlap__media {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.overlap__media img {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: clamp(360px, 48vw, 640px);
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.overlap__media figcaption {
+  margin-top: .75rem;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.overlap__card {
+  grid-row: 1;
+  z-index: 1;
+  align-self: end;
+  margin-bottom: clamp(-3rem, -4vw, -1.5rem);
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  background: var(--slate-900);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  color: var(--slate-300);
+}
+
+.overlap__card .section-label {
+  color: var(--color-brand);
+}
+
+.overlap__card .section-title {
+  max-width: 18ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #fff;
+}
+
+.overlap__card p {
+  max-width: 56ch;
+  font-size: .98rem;
+  line-height: 1.8;
+  color: var(--slate-300);
+}
+
+.overlap__card > :last-child {
+  margin-bottom: 0;
+}
+
+/* Foto a sinistra, scheda a destra */
+.overlap--left .overlap__media { grid-column: 1 / span 9; }
+.overlap--left .overlap__card { grid-column: 7 / -1; }
+
+/* Foto a destra, scheda a sinistra */
+.overlap--right .overlap__media { grid-column: 4 / -1; }
+.overlap--right .overlap__card { grid-column: 1 / span 6; }
+.overlap--right .overlap__media figcaption { text-align: right; }
+
+/* Solo foto */
+.overlap--plain .overlap__media { grid-column: 1 / span 8; }
+
+@media (max-width: 880px) {
+  .overlap {
+    display: block;
+  }
+
+  .overlap__media img {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .overlap__media figcaption {
+    text-align: left !important;
+  }
+
+  .overlap__card {
+    position: relative;
+    margin: -2.5rem 1rem 0;
+  }
+}
