@@ -1,1 +1,60 @@
+---
+layout: default
+---
+{% assign oggetto = 'Richiesta informazioni: ' | append: page.title %}
+{% if page.rif %}{% assign oggetto = oggetto | append: ' (rif. ' | append: page.rif | append: ')' %}{% endif %}
+<article class="page project-detail">
+  <div class="badge-row badge-row--inline">
+    <span class="badge badge--{{ page.contratto }}">{% if page.contratto == 'affitto' %}In affitto{% else %}In vendita{% endif %}</span>
+    {% if page.stato == 'riservato' %}<span class="badge badge--riservato">Riservato</span>{% endif %}
+  </div>
 
+  <h1>{{ page.title }}</h1>
+
+  <div class="immobile-head">
+    <p class="immobile-where">{{ page.tipologia }}{% if page.localita %}, {{ page.localita }}{% endif %}</p>
+    <p class="immobile-price-lg">{{ page.prezzo | default: 'Prezzo su richiesta' }}</p>
+  </div>
+
+  {% if page.cover %}
+  <figure class="project-hero-media">
+    <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | default: page.title }}" loading="eager" decoding="async">
+  </figure>
+  {% endif %}
+
+  <dl class="project-specs">
+    {% if page.mq %}<div class="spec-item"><dt>Superficie</dt><dd>{{ page.mq }} m²</dd></div>{% endif %}
+    {% if page.locali %}<div class="spec-item"><dt>Locali</dt><dd>{{ page.locali }}</dd></div>{% endif %}
+    {% if page.classe_energetica %}<div class="spec-item"><dt>Classe energetica</dt><dd>{{ page.classe_energetica }}</dd></div>{% endif %}
+    {% if page.rif %}<div class="spec-item"><dt>Riferimento</dt><dd>{{ page.rif }}</dd></div>{% endif %}
+  </dl>
+
+  <div class="project-content">
+    {{ content }}
+  </div>
+
+  {% if page.gallery %}
+  <section class="project-gallery" aria-labelledby="gallery-title">
+    <h2 id="gallery-title">Foto</h2>
+    <div class="gallery-grid">
+      {% for img in page.gallery %}
+      <figure class="gallery-item">
+        <img src="{{ img | relative_url }}" alt="{{ page.title }}, foto {{ forloop.index }}" loading="lazy" decoding="async">
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <aside class="immobile-cta">
+    <h2>Interessato a questo immobile?</h2>
+    <div class="immobile-cta__actions">
+      <a class="btn-primary" href="mailto:{{ site.data.azienda.email }}?subject={{ oggetto | uri_escape }}">Richiedi informazioni</a>
+      <a class="btn-ghost" href="tel:{{ site.data.azienda.telefono | remove: ' ' }}">Chiama {{ site.data.azienda.telefono }}</a>
+    </div>
+  </aside>
+
+  <div class="project-footer">
+    <a href="{{ '/nuove-realizzazioni.html' | relative_url }}" class="btn-ghost">Tutte le nuove realizzazioni</a>
+  </div>
+</article>
