@@ -1,6 +1,7 @@
 title: Edil Crema
 lang: it
-url: "https://github.io"
+timezone: Europe/Rome
+url: "https://edoardo2496.github.io"
 baseurl: "/edilcrema"
 
 collections:
@@ -11,3 +12,5 @@ collections:
 defaults:
   - scope: { path: "", type: "progetti" }
     values: { layout: progetto }
+  - scope: { path: "", type: "posts" }
+    values: { layout: post }
