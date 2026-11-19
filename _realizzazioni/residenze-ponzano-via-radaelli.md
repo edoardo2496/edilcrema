@@ -6,7 +6,6 @@ tipologia: "Villa bifamiliare"
 localita: "Ponzano Veneto (TV)"
 mq: "152"
 classe_energetica: "A4"
-prezzo: "€ 475.000"
 unita: "4 unità, 3 già vendute"
 stato: disponibile
 ordine: 3
