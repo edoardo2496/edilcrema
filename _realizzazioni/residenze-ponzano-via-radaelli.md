@@ -10,17 +10,17 @@ prezzo: "€ 475.000"
 unita: "4 unità, 3 già vendute"
 stato: disponibile
 ordine: 3
-cover: /assets/img/realizzazioni/residenze-ponzano-via-radaelli/cover.jpg
+cover: /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/cover.jpg
 cover_alt: "Render delle ville abbinate di via Radaelli a Ponzano Veneto, vista frontale"
 gallery:
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/01.jpg
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/02.jpg
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/03.jpg
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/04.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/01.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/02.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/03.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/04.jpg
 planimetrie:
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/pianta-01.jpg
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/pianta-02.jpg
-  - /assets/img/realizzazioni/residenze-ponzano-via-radaelli/pianta-03.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/pianta-01.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/pianta-02.jpg
+  - /assets/img/brand/realizzazioni/residenze-ponzano-via-radaelli/pianta-03.jpg
 ---
 
 Quattro ville abbinate a due a due in via Radaelli, a Ponzano Veneto, su due piani e in classe energetica A4. Tre delle quattro unità sono già state vendute: resta disponibile l'unità A2.
