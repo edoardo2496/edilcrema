@@ -6,7 +6,6 @@ tipologia: "Villetta a schiera"
 localita: "Carbonera (TV)"
 mq: "183,94"
 classe_energetica: "A4"
-prezzo: "€ 425.000"
 unita: "4 unità"
 stato: disponibile
 ordine: 2
