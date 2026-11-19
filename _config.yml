@@ -8,9 +8,14 @@ collections:
   progetti:
     output: true
     permalink: /progetti/:name/
+  realizzazioni:
+    output: true
+    permalink: /nuove-realizzazioni/:name/
 
 defaults:
   - scope: { path: "", type: "progetti" }
     values: { layout: progetto }
+  - scope: { path: "", type: "realizzazioni" }
+    values: { layout: realizzazione }
   - scope: { path: "", type: "posts" }
     values: { layout: post }
