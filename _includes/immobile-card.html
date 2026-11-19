@@ -1,0 +1,18 @@
+<a class="immobile-card"
+   href="{{ include.r.url | relative_url }}"
+   data-contratto="{{ include.r.contratto }}"
+   data-settore="{{ include.r.settore }}">
+  {% if include.r.cover %}
+    <img src="{{ include.r.cover | relative_url }}" alt="{{ include.r.cover_alt | default: include.r.title }}" loading="lazy" decoding="async">
+  {% else %}
+    <div class="project-cover-placeholder" aria-hidden="true"></div>
+  {% endif %}
+  <div class="badge-row">
+    <span class="badge badge--{{ include.r.contratto }}">{% if include.r.contratto == 'affitto' %}In affitto{% else %}In vendita{% endif %}</span>
+    {% if include.r.stato == 'riservato' %}<span class="badge badge--riservato">Riservato</span>{% endif %}
+  </div>
+  <p class="project-meta">{{ include.r.tipologia }}{% if include.r.localita %}, {{ include.r.localita }}{% endif %}</p>
+  <h3>{{ include.r.title }}</h3>
+  <p class="immobile-specs">{% if include.r.mq %}{{ include.r.mq }} m²{% endif %}{% if include.r.classe_energetica %} · Classe {{ include.r.classe_energetica }}{% endif %}{% if include.r.unita %} · {{ include.r.unita }}{% endif %}</p>
+  <p class="immobile-price">{{ include.r.prezzo | default: 'Prezzo su richiesta' }}</p>
+</a>
