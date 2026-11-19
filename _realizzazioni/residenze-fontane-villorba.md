@@ -6,7 +6,6 @@ tipologia: "Villa bifamiliare"
 localita: "Villorba (TV)"
 mq: "147,5"
 classe_energetica: "A4"
-prezzo: "€ 465.000"
 unita: "6 unità, 1 già venduta"
 stato: disponibile
 ordine: 1
