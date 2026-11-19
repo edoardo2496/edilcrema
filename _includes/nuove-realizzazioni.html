@@ -1,0 +1,76 @@
+---
+layout: default
+title: "Nuove realizzazioni — Edil Crema"
+description: "Gli immobili costruiti da Edil Crema che puoi acquistare o affittare: appartamenti, ville e capannoni nel Nord Est."
+---
+{% assign immobili = site.realizzazioni | where_exp: "r", "r.stato != 'venduto'" | sort: "ordine" %}
+<div class="page">
+  <h1>Nuove realizzazioni</h1>
+  <p class="page-intro">Gli immobili costruiti da Edil Crema che puoi acquistare o affittare.</p>
+
+  {% if immobili.size > 0 %}
+  <div class="project-filters" role="group" aria-label="Tipo di contratto">
+    <button type="button" class="filter-btn" data-group="contratto" data-filter="tutti" aria-pressed="true">Tutti</button>
+    <button type="button" class="filter-btn" data-group="contratto" data-filter="vendita" aria-pressed="false">In vendita</button>
+    <button type="button" class="filter-btn" data-group="contratto" data-filter="affitto" aria-pressed="false">In affitto</button>
+  </div>
+  <div class="project-filters" role="group" aria-label="Settore">
+    <button type="button" class="filter-btn" data-group="settore" data-filter="tutti" aria-pressed="true">Tutti i settori</button>
+    {% for s in site.data.servizi %}
+      <button type="button" class="filter-btn" data-group="settore" data-filter="{{ s.slug }}" aria-pressed="false">{{ s.nome }}</button>
+    {% endfor %}
+  </div>
+
+  <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
+
+  <div class="project-grid" id="immobili-grid">
+    {% for r in immobili %}{% include immobile-card.html r=r %}{% endfor %}
+  </div>
+  {% else %}
+  <p>Al momento non ci sono immobili disponibili. <a href="{{ '/contatti.html' | relative_url }}">Contattaci</a> per conoscere le prossime realizzazioni.</p>
+  {% endif %}
+</div>
+
+<script>
+  (() => {
+    const grid = document.getElementById('immobili-grid');
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll('.immobile-card')];
+    const status = document.getElementById('filter-status');
+    const state = { contratto: 'tutti', settore: 'tutti' };
+    const groups = {};
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      (groups[b.dataset.group] = groups[b.dataset.group] || []).push(b);
+    });
+
+    function apply(updateUrl) {
+      let visible = 0;
+      cards.forEach(c => {
+        const show = (state.contratto === 'tutti' || c.dataset.contratto === state.contratto) &&
+                     (state.settore === 'tutti' || c.dataset.settore === state.settore);
+        c.hidden = !show;
+        if (show) visible++;
+      });
+      Object.entries(groups).forEach(([g, btns]) =>
+        btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === state[g]))));
+      status.textContent = visible === 0 ? 'Nessun immobile con questi filtri.'
+        : visible === 1 ? '1 immobile' : visible + ' immobili';
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        Object.entries(state).forEach(([g, v]) => v === 'tutti' ? url.searchParams.delete(g) : url.searchParams.set(g, v));
+        history.replaceState(null, '', url);
+      }
+    }
+
+    Object.entries(groups).forEach(([g, btns]) =>
+      btns.forEach(b => b.addEventListener('click', () => { state[g] = b.dataset.filter; apply(true); })));
+
+    // Legge ?contratto= e ?settore= dall'URL; i valori sconosciuti vengono ignorati
+    const q = new URLSearchParams(window.location.search);
+    Object.keys(groups).forEach(g => {
+      const v = q.get(g);
+      if (v && groups[g].some(b => b.dataset.filter === v)) state[g] = v;
+    });
+    apply(false);
+  })();
+</script>
