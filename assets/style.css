@@ -1933,3 +1933,45 @@ button:focus-visible {
     margin: -2.5rem 1rem 0;
   }
 }
+
+/* ==========================================================================
+   NUOVE REALIZZAZIONI (da incollare in fondo a assets/style.css)
+   ========================================================================== */
+
+.immobile-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.immobile-card:hover { border-color: var(--slate-300); box-shadow: var(--shadow-md); }
+.immobile-card[hidden] { display: none; }
+.immobile-card img,
+.immobile-card .project-cover-placeholder {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--bg-concrete);
+}
+.immobile-card h3 { padding: .35rem 1.4rem .5rem; font-size: 1.3rem; line-height: 1.25; }
+.immobile-specs { padding: 0 1.4rem; font-size: .9rem; color: var(--text-muted); }
+.immobile-price { padding: .6rem 1.4rem 1.4rem; font-size: 1.15rem; font-weight: 600; color: var(--color-primary); }
+
+.badge-row { position: absolute; top: .8rem; left: .8rem; display: flex; gap: .4rem; z-index: 1; }
+.badge-row--inline { position: static; margin-bottom: 1rem; }
+.badge {
+  padding: .25rem .65rem; font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; border-radius: 2px; color: var(--text-inverse); background: var(--slate-700);
+}
+.badge--vendita { background: var(--color-brand-dark); }
+.badge--affitto { background: var(--slate-800); }
+.badge--riservato { background: var(--slate-500); }
+
+.immobile-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+.immobile-where { color: var(--text-muted); font-weight: 600; }
+.immobile-price-lg { font-size: 1.6rem; font-weight: 600; color: var(--color-primary); }
+
+.immobile-cta { margin-top: 3rem; padding: 2rem; background: var(--bg-concrete); border-radius: var(--radius); }
+.immobile-cta__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1rem; }
