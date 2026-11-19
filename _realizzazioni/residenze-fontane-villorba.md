@@ -10,7 +10,7 @@ prezzo: "€ 465.000"
 unita: "6 unità, 1 già venduta"
 stato: disponibile
 ordine: 1
-cover: /assets/img/realizzazioni/residenze-fontane-villorba/cover.jpg
+cover: /assets/img/brand/realizzazioni/residenze-fontane-villorba/cover.jpg
 cover_alt: "Render delle ville bifamiliari di Fontane di Villorba lungo la strada"
 gallery:
   - /assets/img/brand/realizzazioni/residenze-fontane-villorba/01.jpg
@@ -18,12 +18,12 @@ gallery:
 planimetrie:
   - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-01.jpg
   - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-02.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-03.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-04.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-05.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-06.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-07.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-08.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-03.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-04.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-05.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-06.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-07.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-08.jpg
 ---
 
 Nuove residenze a Fontane di Villorba: sei unità abbinate a due a due, su due piani, in classe energetica A4. Una delle sei unità è già stata venduta.
