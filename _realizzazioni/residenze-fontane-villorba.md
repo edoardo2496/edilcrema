@@ -13,11 +13,11 @@ ordine: 1
 cover: /assets/img/realizzazioni/residenze-fontane-villorba/cover.jpg
 cover_alt: "Render delle ville bifamiliari di Fontane di Villorba lungo la strada"
 gallery:
-  - /assets/img/realizzazioni/residenze-fontane-villorba/01.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/02.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/01.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/02.jpg
 planimetrie:
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-01.jpg
-  - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-02.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-01.jpg
+  - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-02.jpg
   - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-03.jpg
   - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-04.jpg
   - /assets/img/realizzazioni/residenze-fontane-villorba/pianta-05.jpg
