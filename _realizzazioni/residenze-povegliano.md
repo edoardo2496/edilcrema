@@ -5,7 +5,7 @@ settore: residenziale
 tipologia: "Villa bifamiliare"
 localita: "Povegliano (TV)"
 mq: "156,8"
-classe_energetica: ""
+classe_energetica: "A4"
 unita: "6 unità, 3 già vendute"
 stato: disponibile
 ordine: 3
