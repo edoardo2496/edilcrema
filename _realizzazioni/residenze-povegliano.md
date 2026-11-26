@@ -4,7 +4,6 @@ contratto: vendita
 settore: residenziale
 tipologia: "Villa bifamiliare"
 localita: "Povegliano (TV)"
-mq: "156,8"
 classe_energetica: "A4"
 unita: "6 unità, 3 già vendute"
 stato: disponibile
@@ -21,13 +20,15 @@ planimetrie:
   - /assets/img/brand/realizzazioni/residenze-povegliano/pianta-04.jpg
 ---
 
-Nuove residenze a Povegliano, su Viale Unità d'Italia: sei unità abbinate a due a due (A, B e C), su due piani. Tre delle sei unità sono già state vendute.
+Nuove residenze a Povegliano, su Viale Unità d'Italia: sei unità abbinate a due a due (A, B e C), distribuite su due piani. Tre delle sei unità sono già state vendute.
 
 ## Gli spazi
 
-Al piano terra un ampio soggiorno-pranzo di circa 53 m², con portico, lavanderia, bagno, disimpegno e garage di quasi 24 m². Al piano primo tre camere, di cui la matrimoniale con cabina armadio e bagno privato, un secondo bagno con antibagno e due logge, di 12,8 e 5 m² circa.
+Al piano terra si apre un ampio soggiorno-pranzo, un ambiente luminoso e generoso pensato per la vita di ogni giorno e per ricevere gli ospiti. Il portico crea una continuità naturale con il giardino, mentre la lavanderia, il bagno, il disimpegno e il garage completano la zona giorno con praticità.
 
-La superficie netta è di 156,8 m², di cui 93,3 al piano terra e 63,5 al piano primo, esclusi portici e logge. Ogni unità ha un giardino privato: da 112 a 311 m² a seconda dell'unità.
+Al piano primo la zona notte ospita tre camere. La matrimoniale è particolarmente spaziosa, con cabina armadio e bagno privato. Un secondo bagno con antibagno serve le altre camere, e due logge offrono comodi spazi all'aperto da vivere in ogni stagione.
+
+Ogni unità dispone di un giardino privato di dimensioni importanti, ideale per giocare, coltivare o semplicemente rilassarsi all'aria aperta.
 
 ## Comfort ed efficienza
 
