@@ -4,7 +4,6 @@ contratto: vendita
 settore: residenziale
 tipologia: "Villa bifamiliare"
 localita: "Ponzano Veneto (TV)"
-mq: "152"
 classe_energetica: "A4"
 unita: "4 unità, 3 già vendute"
 stato: disponibile
@@ -26,11 +25,13 @@ Quattro ville abbinate a due a due in via Radaelli, a Ponzano Veneto, su due pia
 
 ## L'unità A2
 
-L'unità ha una superficie netta di 152 m², di cui 86,5 al piano terra e 65,5 al piano primo, più 18,8 m² di terrazze. Il giardino privato è di 129 m².
+L'unità disponibile è una villa ampia e luminosa, distribuita su due piani e arricchita da terrazze, balconi e logge. Il giardino privato la accompagna con uno spazio all'aperto da vivere in tutta tranquillità.
 
 ## Gli spazi
 
-Al piano terra un ampio soggiorno con cucina di circa 48 m², lavanderia con locale tecnico, garage di quasi 19 m², bagno e ripostiglio. Al piano primo quattro camere, due bagni e un disimpegno, con due balconi e due logge.
+Al piano terra si apre un ampio soggiorno con cucina, un ambiente generoso pensato per la vita di ogni giorno e per le occasioni di convivialità. Completano la zona giorno la lavanderia con locale tecnico, il garage, il bagno e un comodo ripostiglio.
+
+Al piano primo la zona notte offre quattro camere, due bagni e un disimpegno. Due balconi e due logge regalano spazi all'aperto privati, perfetti per ogni momento della giornata.
 
 ## Il progetto
 
