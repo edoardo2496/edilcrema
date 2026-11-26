@@ -13,6 +13,9 @@ cover_alt: "Render delle ville bifamiliari di Povegliano lungo Viale Unità d'It
 gallery:
   - /assets/img/brand/realizzazioni/residenze-povegliano/01.jpg
   - /assets/img/brand/realizzazioni/residenze-povegliano/02.jpg
+  - /assets/img/brand/realizzazioni/residenze-povegliano/residenziale-povegliano-interni.jpg
+  - /assets/img/brand/realizzazioni/residenze-povegliano/residenziale-povegliano-interni-2.jpg
+  - /assets/img/brand/realizzazioni/residenze-povegliano/residenziale-povegliano-interni-3.jpg
 planimetrie:
   - /assets/img/brand/realizzazioni/residenze-povegliano/pianta-01.jpg
   - /assets/img/brand/realizzazioni/residenze-povegliano/pianta-02.jpg
