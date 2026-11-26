@@ -4,7 +4,6 @@ contratto: vendita
 settore: residenziale
 tipologia: "Villa bifamiliare"
 localita: "Villorba (TV)"
-mq: "147,5"
 classe_energetica: "A4"
 unita: "6 unità, 1 già venduta"
 stato: disponibile
@@ -25,13 +24,15 @@ planimetrie:
   - /assets/img/brand/realizzazioni/residenze-fontane-villorba/pianta-08.jpg
 ---
 
-Nuove residenze a Fontane di Villorba: sei unità abbinate a due a due, su due piani, in classe energetica A4. Una delle sei unità è già stata venduta.
+Nuove residenze a Fontane di Villorba: sei unità abbinate a due a due, distribuite su due piani, in classe energetica A4. Una delle sei unità è già stata venduta.
 
 ## Gli spazi
 
-Al piano terra un ampio open space soggiorno e cucina di circa 52 m², con portico, lavanderia con locale tecnico, garage di 16 m², bagno e disimpegno. Al piano primo tre camere, di cui la matrimoniale con cabina armadio e bagno privato, un secondo bagno e un terrazzo di 11 m².
+Al piano terra si apre un ampio open space che unisce soggiorno e cucina, un ambiente luminoso e generoso pensato per la vita quotidiana e per ricevere ospiti. Il portico crea una continuità naturale con il giardino, mentre la lavanderia con locale tecnico, il garage, il bagno e il disimpegno completano la zona giorno con praticità.
 
-La superficie netta è di 147,5 m², di cui 88,8 al piano terra e 58,7 al piano primo, esclusi portico e terrazzo. Ogni unità ha un giardino privato: l'area scoperta va da 244 a 307 m² a seconda dell'unità.
+Al piano primo la zona notte ospita tre camere. La matrimoniale è particolarmente spaziosa, con cabina armadio e bagno privato. Un secondo bagno serve le altre camere, e un terrazzo offre un comodo spazio all'aperto da vivere in ogni stagione.
+
+Ogni unità dispone di un giardino privato di dimensioni importanti, ideale per giocare, coltivare o semplicemente rilassarsi all'aria aperta.
 
 ## Finiture
 
