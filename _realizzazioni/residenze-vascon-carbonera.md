@@ -4,7 +4,6 @@ contratto: vendita
 settore: residenziale
 tipologia: "Villetta a schiera"
 localita: "Carbonera (TV)"
-mq: "183,94"
 classe_energetica: "A4"
 unita: "4 unità"
 stato: disponibile
@@ -27,9 +26,11 @@ Quattro villette a schiera di nuova costruzione a Vascon di Carbonera, su due pi
 
 ## Gli spazi
 
-Al piano terra una zona giorno di circa 36 m² con cucina abitabile di 14 m², garage di 20 m², lavanderia, deposito giardino e bagno. Al piano primo tre camere, di cui due con bagno privato, uno studio, cabina armadio, un terrazzo coperto e un terrazzo scoperto di 18 m² con pergolato.
+Al piano terra si apre una zona giorno ampia e luminosa, con cucina abitabile pensata per vivere la casa in ogni momento della giornata. Il garage, la lavanderia, il deposito giardino e il bagno completano il piano con praticità.
 
-La superficie netta è di 183,94 m², di cui 98,86 al piano terra e 85,08 al piano primo, esclusi i terrazzi. L'area scoperta di ogni unità va da 232 a 607 m² a seconda dell'unità.
+Al piano primo la zona notte ospita tre camere, due delle quali con bagno privato, oltre a uno studio e a una comoda cabina armadio. Un terrazzo coperto e un terrazzo scoperto con pergolato offrono spazi all'aperto da vivere in ogni stagione.
+
+Ogni unità dispone di un giardino privato di dimensioni generose, ideale per giocare, coltivare o semplicemente rilassarsi all'aria aperta.
 
 ## Finiture
 
