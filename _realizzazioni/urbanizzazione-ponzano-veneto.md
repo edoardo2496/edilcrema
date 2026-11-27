@@ -1,7 +1,7 @@
 ---
 title: "Urbanizzazione produttiva a Ponzano Veneto"
 contratto: vendita
-settore: urbanizzazioni
+settore: urbanistica e urbanizzazioni
 tipologia: "Urbanizzazione di area produttiva e commerciale"
 localita: "Ponzano Veneto (TV)"
 unita: "16.000 mq di unità produttive, ampliabili di 3.000 mq commerciali e 3.700 mq produttivi"
